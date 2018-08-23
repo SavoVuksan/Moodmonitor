@@ -1,0 +1,52 @@
+<div (appClickOutside)="(isActive ? toggleNav(): '')">
+  <div class="row nav  shadow">
+    <div class="col">
+      <div class="nav-btn" (click)="toggleNav()">
+        <img src="./../../../assets/icons/BurgerMenu.svg">
+      </div>
+      <h3 class="text-center">
+        MOOD &nbsp;<span>MONITOR</span>
+      </h3>
+    </div>
+  </div>
+  <div class="container-fluid nav-content-container" [ngClass]="isActive ? 'tab-Active' : 'tab-Hidden'">
+    <div class="row">
+      <div class="col user-panel  shadow">
+        <!--User Image panel !-->
+        <div class="row">
+          <div class="col ">
+            <div class="userPic ">
+              <img src="../../../assets/testProfilPic.jpg" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h4 class="whiteHeading">
+              Savo Vuksan
+            </h4>
+            <div class="logOut">
+              <img src="../../../assets/icons/LogOut.svg" alt="">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col panel short shadow nav-element" routerLink="/dashboard">
+        <img src="../../../assets/icons/Dashboard.svg" alt="">
+        <div class="verticalStripe"></div>
+        <h4>Dashboard</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col panel short shadow nav-element" routerLink="/writeMood">
+        <img src="../../../assets/icons/Cloud.svg" alt="">
+        <div class="verticalStripe"></div>
+        <h4>Todays Mood</h4>
+      </div>
+    </div>
+  </div>
+</div>

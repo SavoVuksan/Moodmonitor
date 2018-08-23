@@ -1,0 +1,59 @@
+.heading{
+  font-family: Oswald;
+
+
+  font-style: italic;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translate(0%,-50%);
+  font-size: 2em;
+}
+.commitMood{
+  border-radius: 200px;
+  width: 60px;
+  height: 60px;
+  background-color: #4A96D3;
+  border-style: none;
+  margin: auto;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.commitMood > img{
+  margin: 0px 5px 0px 5px;
+}
+.emotion-list{
+  list-style: none;
+  padding: 0;
+  line-height: 2.5em;
+}
+.emotion-list >li{
+  padding-left: 15px;
+  color: #4D4D4D;
+  font-family: Oswald;
+  font-size: 1.25em;
+  font-weight: lighter;
+
+}
+#positive{
+  background-color: #4A96D3;
+  color: white;
+}
+.negative{
+  background-color: #D15E4B;
+  color: white;
+}
+.overflow-hidden{
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.no-padding{
+  padding: 0px;
+}
+.input-oneLine{
+  display: block;
+  border-radius: 5px;
+  border-style: solid;
+}

@@ -1,0 +1,109 @@
+.nav{
+  background-color: #fff;
+}
+
+.nav-btn{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.nav-btn > img{
+  width: 50px;
+  heigth: 50px;
+}
+h3{
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-family: Oswald;
+  font-style: italic;
+  color: #333333;
+}
+h3 > span{
+  font-family: "PT Mono";
+  font-style: normal;
+}
+
+.nav-content-container{
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  transition: left 0.5s;
+  width: 80vw;
+}
+.tab-Active{
+  left: 0vw;
+
+}
+.tab-Hidden{
+  left: -100vw;
+}
+.user-panel{
+  height: 150px;
+  background-color: #4A96D3;
+  text-align: center;
+}
+
+
+.nav-element > h4{
+  position: absolute;
+  font-family: Oswald;
+  font-style: italic;
+  left: 130px;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+}
+.nav-element > img{
+  position: relative;
+  top: 50%;
+  left: 10px;
+  transform: translate(0%,-50%);
+  width: 40px;
+  max-height: 30px;
+}
+.nav-element{
+  padding: 0px;
+}
+.verticalStripe{
+  position: absolute;
+  top: 50%;
+  transform: translate(0%,-50%);
+  left: 60px;
+  width: 2px;
+  height: 80%;
+  border-radius: 10px;
+  background-color: #666666;
+}
+.userPic{
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 200px;
+  margin: auto;
+  margin-top: 20px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #fff;
+}
+.userPic > img{
+  width: 74px;
+
+}
+
+.logOut{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.whiteHeading{
+  color: white;
+  font-family: Oswald;
+  font-style: italic;
+  font-weight: normal;
+  margin-top: 6px;
+  display: inline-block;
+}
