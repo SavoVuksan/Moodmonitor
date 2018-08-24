@@ -1,0 +1,23 @@
+.emotion-list{
+  list-style: none;
+  padding: 0;
+  line-height: 2.5em;
+  margin-bottom: 0px;
+}
+.emotion-list >li{
+  padding-left: 15px;
+  color: #4D4D4D;
+  font-family: Oswald;
+  font-size: 1.25em;
+  font-weight: lighter;
+  transition: background-color 0.4s, color 0.4s;
+}
+.positive{
+
+  background-color: #4A96D3;
+  color: white !important;
+}
+.negative{
+  background-color: #D15E4B;
+  color: white !important;
+}

@@ -1,0 +1,6 @@
+
+  <ul class="emotion-list" *ngFor="let e of emotions">
+    <li [ngClass]="e.isActive ? (emotionType === 'positive' ? 'positive' : 'negative') : ''" (click)="e.isActive = !e.isActive" >{{e.name}}</li>
+
+  </ul>
+

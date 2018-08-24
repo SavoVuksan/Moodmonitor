@@ -7,6 +7,7 @@ import { WriteMoodComponent } from './components/write-mood/write-mood.component
 import { RouterModule, Routes } from '@angular/router';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { EmotionListComponent } from './components/emotion-list/emotion-list.component';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -20,7 +21,8 @@ const appRoutes : Routes = [
     DashboardComponent,
     WriteMoodComponent,
     NavigationComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    EmotionListComponent
   ],
   imports: [
     BrowserModule,

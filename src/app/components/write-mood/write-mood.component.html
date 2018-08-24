@@ -5,31 +5,26 @@
 </div>
 <div class="row">
   <div class="col panel tall shadow no-padding overflow-hidden">
-    <ul class="emotion-list">
-      <li id="positive">Happy</li>
-      <li>Satisfied</li>
-      <li>Proud</li>
-      <li id="positive">Free</li>
-      <li>Test</li>
-    </ul>
+    <app-emotion-list [emotions]="this.testDataPos" [emotionType]="'positive'"></app-emotion-list>
   </div>
   <div class="col panel tall shadow no-padding overflow-hidden">
+  <app-emotion-list [emotions]="this.testDataNeg" [emotionType]="'negative'"></app-emotion-list>
+</div>
 
-  </div>
 </div>
 <div class="row">
   <div class="col panel short shadow">
-    <input  class="input-oneLine" type="text">
+    <input  class="input-oneLine input-focus" (input)="this.tags = $event.target.value" [value]="this.tags" type="text">
   </div>
 </div>
 <div class="row">
   <div class="col panel xtall shadow">
-
+    <textarea class="input-paragraph input-focus" (input)="this.moodText = $event.target.value" [value] = "this.moodText" cols="30" rows="10"></textarea>
   </div>
 </div>
 <div class="row">
   <div class="col">
-    <button class="commitMood">
+    <button class="commitMood shadow">
       <img src="../../../assets/icons/CloudWhite.svg" alt="">
     </button>
   </div>

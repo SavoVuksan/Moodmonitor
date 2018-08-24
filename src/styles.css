@@ -28,3 +28,11 @@
 .short{
   height: 80px;
 }
+.overflow-hidden{
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.no-padding{
+  padding: 0px;
+}
