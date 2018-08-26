@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { EmotionListComponent } from './components/emotion-list/emotion-list.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -29,7 +30,8 @@ const appRoutes : Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false}
-    )
+    ),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

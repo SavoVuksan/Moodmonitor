@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Emotion} from '../../classes/emotion';
+import {RestServiceService} from '../../services/rest-service.service';
+import {Entry} from '../../classes/entry';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-write-mood',
@@ -8,34 +11,52 @@ import {Emotion} from '../../classes/emotion';
 })
 export class WriteMoodComponent implements OnInit {
 
-  testDataPos : Emotion[];
-  testDataNeg : Emotion[];
+  posEmotions : Emotion[];
+  negEmotions : Emotion[];
 
   tags: string;
   moodText: string;
 
-  constructor() {
+  constructor(private rest:RestServiceService, private router: Router) {
+    this.posEmotions = new Array();
+    this.negEmotions = new Array();
+    rest.getPositiveEmotions().subscribe((data) =>{
+      data[0].positiveEmotions.forEach((element) =>{
+        this.posEmotions.push(new Emotion(element,false));
+      });
+    });
+    rest.getNegativeEmotions().subscribe((data) =>{
+      data[0].negativeEmotions.forEach((element) =>{
+        this.negEmotions.push(new Emotion(element, false));
+      });
+    });
     this.tags = '';
     this.moodText = '';
 
-    this.testDataPos = [new Emotion('Happy', false)
-      ,new Emotion('Proud', false)
-      , new Emotion('Free', false)
-      , new Emotion('Satisfied', false)
-      , new Emotion('Cheerful', false)];
-
-    this.testDataNeg = [
-      new Emotion('Sad', false)
-      ,new Emotion('Angry', false)
-      ,new Emotion('Frustrated', false)
-      ,new Emotion('Self conscious', false)
-      ,new Emotion('Tired', false)
-      ,
-    ];
   }
 
   ngOnInit() {
 
+  }
+
+  submit(){
+    let entry = new Entry(new Date());
+    entry.tags = this.tags;
+    entry.moodText = this.moodText;
+    entry.posEmotions = this.posEmotions.filter((element) =>{
+      if(element.isActive){
+        return element;
+      }
+    });
+    entry.negEmotions = this.negEmotions.filter((element) => {
+      if(element.isActive){
+        return element;
+      }
+    });
+    this.rest.postEntry(entry).subscribe((entry) => {
+      console.log(JSON.stringify(entry));
+      this.router.navigateByUrl('/dashboard');
+    });
   }
 
 }
