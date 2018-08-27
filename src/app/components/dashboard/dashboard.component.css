@@ -1,0 +1,56 @@
+.smallDashboard-panel{
+
+  text-align: center;
+}
+.smallDashboard-panel > h4{
+
+}
+.smallDashboard-panel > h3{
+  font-family: Oswald;
+  font-style: italic;
+  margin-top: 30px;
+  font-size: 2.5em;
+
+}
+h4{
+  font-family: Oswald;
+  font-weight: lighter;
+  margin-top: 20px;
+  font-size: 1.8em;
+  color: #4D4D4D;
+}
+p{
+  font-family: Oswald;
+  font-weight: bold;
+  font-size: 1.1em;
+  height: 50%;
+  line-height: 23px;
+  overflow: hidden;
+}
+.margin-left{
+  margin-left: 20px;
+}
+.overflow-hidden-no-scroll{
+  overflow: hidden;
+}
+.circle{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: #aaa;
+  text-align: center;
+  left: 150px;
+  top: 25px;
+  padding-right: 3px;
+  font-size: 1.2em;
+  font-family: Oswald;
+  font-style: italic;
+  color: white;
+}
+.blue{
+  background-color: #4A96D3;
+}
+.red{
+  background-color: #D15E4B;
+}

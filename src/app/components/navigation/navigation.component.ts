@@ -21,7 +21,5 @@ export class NavigationComponent implements OnInit {
     this.isActive = !this.isActive;
 
   }
-  print(){
-    console.log('meep');
-  }
+
 }

@@ -2,15 +2,26 @@
 
   <div class="row">
     <div class="col panel tall shadow">
+      <div class="smallDashboard-panel">
+        <h4>Good Days</h4>
+        <h3>{{posDays}}</h3>
+      </div>
 
     </div>
     <div class="col panel tall shadow">
-
+      <div class="smallDashboard-panel">
+        <h4>Bad Days</h4>
+        <h3>{{negDays}}</h3>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col panel tall shadow">
-
+    <div class="col panel tall shadow overflow-hidden-no-scroll">
+      <div class="circle" [ngClass]="(lMDayType === 1 ? 'blue': 'red')">{{lMDayType}}</div>
+      <h4 class="margin-left">Last Mood </h4>
+      <p class="margin-left">
+        {{lMMoodText}}
+      </p>
     </div>
   </div>
   <div class="row">

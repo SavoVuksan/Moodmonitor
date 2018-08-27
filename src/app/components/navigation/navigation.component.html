@@ -35,14 +35,14 @@
     </div>
 
     <div class="row">
-      <div class="col panel short shadow nav-element" routerLink="/dashboard">
+      <div class="col panel short shadow nav-element" routerLink="/dashboard" (click)="isActive = false">
         <img src="../../../assets/icons/Dashboard.svg" alt="">
         <div class="verticalStripe"></div>
         <h4>Dashboard</h4>
       </div>
     </div>
     <div class="row">
-      <div class="col panel short shadow nav-element" routerLink="/writeMood">
+      <div class="col panel short shadow nav-element" routerLink="/writeMood" (click)="isActive = false">
         <img src="../../../assets/icons/Cloud.svg" alt="">
         <div class="verticalStripe"></div>
         <h4>Todays Mood</h4>
