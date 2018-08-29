@@ -32,5 +32,8 @@ export class RestServiceService {
   public getLastMood(){
     return this.http.get(`http://${this.ip}:3000/lastMood`);
   }
+  public getRangeEntries(from: Date, to: Date){
+    return this.http.get(`http://${this.ip}:3000/getRangeEntries?from=${from}&to=${to}`);
+  }
 
 }

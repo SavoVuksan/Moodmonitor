@@ -1,0 +1,100 @@
+.calendar-panel{
+  height: 420px;
+}
+.blue{
+  background-color: #4A96D3;
+}
+.red{
+  background-color: #D15E4B;
+}
+.col{
+  text-align: center;
+}
+.cal-day{
+
+  font-family: Oswald;
+  font-weight: lighter;
+  color: #4D4D4D;
+  font-size: 0.9em;
+}
+.marg-top{
+  margin-top: 35px;
+}
+
+.marg-top:nth-of-type(3){
+  margin-top: 10px;
+
+}
+h3{
+  font-family: Oswald;
+  font-size: 1.8em;
+  display: inline-block;
+  color: #4D4D4D;
+}
+
+.paddings{
+  padding: 10px 30px 10px 30px;
+}
+
+.today{
+  border-radius: 40px;
+  border-color: #4A96D3;
+  border-width: 2px;
+  border-style: solid;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+ img{
+  height: 30px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.selector > h3{
+  margin: 10px 20px 10px 20px;
+  font-size: 2em;
+}
+.month-selector{
+  margin-bottom: 20px;
+}
+.pad-top{
+  padding-top: 15px;
+}
+
+.entry{
+  width: 8px;
+  height: 8px;
+  border-radius: 20px;
+  border-width: 2px;
+  border-style: solid;
+
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translate(-50%,0%);
+}
+.pos{
+  border-color: #4A96D3;
+}
+.neg{
+  border-color: #D15E4B;
+}
+.neut{
+  border-color: #4D4D4D;
+}
+
+@media all and (max-width: 372px){
+  .row{
+    font-size: 11px !important;
+  }
+  .paddings{
+    padding: 10px 20px 10px 20px;
+  }
+  .calendar-panel{
+    height: 380px;
+  }
+}

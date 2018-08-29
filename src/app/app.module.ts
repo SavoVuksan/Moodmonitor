@@ -9,11 +9,13 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { EmotionListComponent } from './components/emotion-list/emotion-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard' , component: DashboardComponent},
-  {path: 'writeMood', component : WriteMoodComponent}
+  {path: 'writeMood', component : WriteMoodComponent},
+  {path: 'calendar', component: CalendarComponent}
 ]
 
 @NgModule({
@@ -23,7 +25,8 @@ const appRoutes : Routes = [
     WriteMoodComponent,
     NavigationComponent,
     ClickOutsideDirective,
-    EmotionListComponent
+    EmotionListComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

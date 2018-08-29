@@ -1,0 +1,55 @@
+<div class="row">
+<div class="col shadow panel short selector pad-top">
+  <img src="../../../assets/icons/ArrowLeft.svg" alt="" (click)="changeYear(-1)">
+  <h3>{{selectedDate.getFullYear() }}</h3>
+  <img src="../../../assets/icons/ArrowRight.svg" alt="" (click)="changeYear(1)">
+</div>
+</div>
+<div class="row">
+<div class="col shadow panel calendar-panel paddings">
+  <div class="row ">
+    <div class="col selector month-selector">
+      <img src="../../../assets/icons/ArrowLeft.svg" alt="" (click)="changeMonth(-1)">
+      <h3>{{getMonthName(selectedDate) }}</h3>
+      <img src="../../../assets/icons/ArrowRight.svg" alt="" (click)="changeMonth(1)">
+
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col">
+      <h3>M</h3>
+    </div>
+    <div class="col">
+      <h3>T</h3>
+    </div>
+    <div class="col">
+      <h3>W</h3>
+    </div>
+    <div class="col">
+      <h3>T</h3>
+    </div>
+    <div class="col">
+      <h3>F</h3>
+    </div>
+    <div class="col">
+      <h3>S</h3>
+    </div>
+    <div class="col">
+      <h3>S</h3>
+    </div>
+  </div>
+
+  <div class="row marg-top"  *ngFor="let row of calendarRows; index as y">
+    <div class="col " *ngFor="let col of calendarCols; index as x">
+      <div class="cal-day">
+        <div [ngClass]="(isFieldToday(x+1+7*y)? 'today': '')" class=""></div>
+        <div [ngClass]="hasFieldEntry(x+1+7*y)" class=""></div>
+        {{(((x+1)+7*y) <= dayCount ? (x+1)+7*y : (x+1)+7*y-dayCount)}}
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+</div>
