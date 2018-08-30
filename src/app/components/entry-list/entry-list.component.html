@@ -1,0 +1,15 @@
+
+<div class="row">
+  <div class="col panel short shadow">
+    <h3 class="center-hv">{{this.sharedVars.selectedDay.toLocaleDateString()}}</h3>
+  </div>
+</div>
+<div class="row" *ngFor="let entry of this.sharedVars.selectedDayEntries; let i = index">
+  <div class="col panel tall shadow ">
+
+    <p class="marg-top  overflow-hidden-no-scroll">
+      <span [ngClass]="this.sharedVars.dayType(entry)" class="entry-type white-text center-text font-italic">{{i+1}}</span>
+      {{entry.moodText}}
+    </p>
+  </div>
+</div>

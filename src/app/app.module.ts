@@ -10,12 +10,16 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { EmotionListComponent } from './components/emotion-list/emotion-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { EntryListComponent } from './components/entry-list/entry-list.component';
+import { ReadMoodComponent } from './components/read-mood/read-mood.component';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard' , component: DashboardComponent},
   {path: 'writeMood', component : WriteMoodComponent},
-  {path: 'calendar', component: CalendarComponent}
+  {path: 'calendar', component: CalendarComponent},
+  {path: 'entryList', component: EntryListComponent},
+  {path: 'readMood', component: ReadMoodComponent}
 ]
 
 @NgModule({
@@ -26,7 +30,9 @@ const appRoutes : Routes = [
     NavigationComponent,
     ClickOutsideDirective,
     EmotionListComponent,
-    CalendarComponent
+    CalendarComponent,
+    EntryListComponent,
+    ReadMoodComponent
   ],
   imports: [
     BrowserModule,

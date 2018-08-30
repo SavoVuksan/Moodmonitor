@@ -16,11 +16,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col panel tall shadow overflow-hidden-no-scroll">
+    <div class="col panel tall shadow overflow-hidden-no-scroll" (click)="routeToLastMood()">
       <div class="circle" [ngClass]="(lMDayType === 1 ? 'blue': (lMDayType === -1 ? 'red': 'neut'))">{{lMDayType}}</div>
       <h4 class="margin-left">Last Mood </h4>
       <p class="margin-left">
-        {{lMMoodText}}
+        {{this.entry.moodText}}
       </p>
     </div>
   </div>

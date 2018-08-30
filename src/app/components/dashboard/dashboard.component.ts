@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RestServiceService} from '../../services/rest-service.service';
+import {SharedVarsService} from '../../services/shared-vars.service';
+import {Entry} from '../../classes/entry';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,11 +17,14 @@ export class DashboardComponent implements OnInit {
   lMDayType: number;
   lMMoodText: string;
 
-  constructor(private rest:RestServiceService) {
+  private entry: Entry;
+
+  constructor(private rest:RestServiceService,private sharedVars:SharedVarsService, private router: Router) {
 
   }
 
   ngOnInit() {
+    this.entry = new Entry(new Date());
 
     this.rest.getPosDays().subscribe((data) =>{
       this.posDays = data['posDays'];
@@ -29,11 +35,13 @@ export class DashboardComponent implements OnInit {
     });
 
     this.rest.getLastMood().subscribe((data) =>{
-      this.lMMoodText = data['moodText'];
-      let pE = data['posEmotions'];
-      let nE = data['negEmotions'];
-      if(pE.length > 0){
-        if(nE.length > 0){
+      this.entry = new Entry(data['date']);
+      this.entry.moodText = data['moodText'];
+      this.entry.tags = data['tags'];
+      this.entry.posEmotions = data['posEmotions'];
+      this.entry.negEmotions = data['negEmotions'];
+      if(this.entry.posEmotions.length > 0){
+        if(this.entry.negEmotions.length > 0){
           this.lMDayType = 0;
         }else{
           this.lMDayType = 1;
@@ -42,6 +50,12 @@ export class DashboardComponent implements OnInit {
         this.lMDayType = -1;
       }
     });
+  }
+
+  routeToLastMood(){
+    this.sharedVars.selectedEntry = this.entry;
+
+    this.router.navigateByUrl('/readMood');
   }
 
 }

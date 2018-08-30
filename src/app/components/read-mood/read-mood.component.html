@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col shadow short panel">
+    <h3 class="center-hv">
+      {{this.sharedVars.selectedDay.toLocaleDateString()}}
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col shadow tall panel no-padding overflow-hidden">
+    <app-emotion-list [editable]="false" [emotionType]="'positive'" [emotions]="this.posEmotions"></app-emotion-list>
+
+  </div>
+  <div class="col shadow tall panel no-padding overflow-hidden">
+    <app-emotion-list [editable]="false" [emotions]="this.negEmotions" [emotionType]="'negative'"></app-emotion-list>
+  </div>
+</div>
+<div class="row">
+  <div class="col shadow short panel">
+
+  </div>
+</div>
+

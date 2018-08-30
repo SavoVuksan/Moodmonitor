@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Entry} from '../../classes/entry';
 import {RestServiceService} from '../../services/rest-service.service';
+import {Router} from '@angular/router';
+import {SharedVarsService} from '../../services/shared-vars.service';
 
 @Component({
   selector: 'app-calendar',
@@ -18,7 +20,7 @@ export class CalendarComponent implements OnInit {
 
   entries: Entry[];
 
-  constructor(private rest: RestServiceService) {
+  constructor(private rest: RestServiceService,private router: Router,private sharedVars:SharedVarsService) {
     this.calendarRows = Array(5);
     this.calendarCols = Array(7);
     this.dayCount = this.daysInMonth(new Date());
@@ -96,6 +98,42 @@ export class CalendarComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  viewEntry(field: number){
+    if(this.hasFieldEntry(field) !== ''){
+
+      //Switch to list view when there are more than 1 entry
+      if(this.entriesPerDay(field) > 1){
+        this.sharedVars.selectedDayEntries = this.getSelectedDayEntries(field);
+        const selDate = new Date(this.selectedDate);
+        selDate.setDate(field);
+        this.sharedVars.selectedDay = selDate;
+        // WEIL ICH GLAUB DAS ICH ZUHAUSE MICH SEHR UNWOHL FÜHL UND DORT NICHT RUNTERKOMMEN KANN UND DESWEGEN MIR DENK HEY ICH WILL
+        // WEG UND DANN MACH ICH KEINE WORKOUTS
+        this.router.navigateByUrl('/entryList');
+      }else{
+
+      }
+    }
+  }
+  getSelectedDayEntries(field: number){
+    const date = new Date(this.selectedDate);
+    date.setDate(field);
+    return this.entries.filter((val) =>{
+      return (val.date.getFullYear() === date.getFullYear() && val.date.getMonth() === date.getMonth() && val.date.getDate() === date.getDate());
+    });
+  }
+  entriesPerDay(field: number){
+    const date = new Date(this.selectedDate);
+    let count = 0;
+    date.setDate(field);
+    this.entries.forEach((val) =>{
+      if(val.date.getFullYear() === date.getFullYear() && val.date.getMonth() === date.getMonth() && val.date.getDate() === date.getDate()){
+        count++;
+      }
+    });
+    return count;
   }
 
 }

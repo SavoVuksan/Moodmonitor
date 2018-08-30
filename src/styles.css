@@ -25,6 +25,9 @@
 .tall{
   height: 180px;
 }
+.middle{
+  height: 120px;
+}
 .short{
   height: 80px;
 }
@@ -32,7 +35,61 @@
   overflow: hidden;
   overflow-y: auto;
 }
+.overflow-hidden-no-scroll{
+  overflow: hidden;
+}
 
 .no-padding{
   padding: 0px;
+}
+h3{
+  color: #4D4D4D;
+  font-family: Oswald;
+  font-style: italic;
+  text-align: center;
+}
+.center-vert{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.center-horz{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.center-hv{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.blue{
+
+  background-color: #4A96D3;
+
+}
+.red{
+  background-color: #D15E4B;
+
+}
+.gray{
+  background-color: #4D4D4D;
+}
+p{
+  font-family: Oswald;
+
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span{
+  font-family: Oswald;
+}
+.white-text{
+  color: white;
+}
+
+.center-text{
+  text-align: center;
 }
