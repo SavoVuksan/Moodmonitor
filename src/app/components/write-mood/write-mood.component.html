@@ -1,8 +1,18 @@
+<div *ngIf="this.responsive.getMobile()">
+
+
+
 <div class="row">
   <div class="col panel short shadow">
     <h4 class="heading">EMOTIONS</h4>
   </div>
 </div>
+  <div class="row">
+    <div class="col panel short shadow">
+      <input  placeholder="Title" class="input-oneLine input-focus" (input)="this.title = $event.target.value" [value]="this.title" type="text">
+
+    </div>
+  </div>
 <div class="row">
   <div class="col panel tall shadow no-padding overflow-hidden">
     <app-emotion-list [emotions]="this.posEmotions" [editable]="true" [emotionType]="'positive'"></app-emotion-list>
@@ -27,5 +37,51 @@
     <button class="commitMood shadow" (click)="submit()">
       <img src="../../../assets/icons/CloudWhite.svg" alt="">
     </button>
+  </div>
+</div>
+</div>
+
+<!-- DESKTOP VIEW !-->
+
+<div *ngIf="!this.responsive.getMobile()">
+  <div class="row">
+    <div class="col title-desktop">
+      <h2 class="text-center">Write Mood</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col panel-desktop shadow">
+          <input type="text" class="input-desktop marg-top-bot" placeholder="Title" (input)="this.title = $event.target.value" [value]="this.title">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col panel-desktop shadow">
+          <textarea name="" id="" cols="30" rows="18" class="textarea-desktop" placeholder="Write about your day!" (input)="this.moodText = $event.target.value" [value]="this.moodText"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col panel-desktop xxtall shadow no-padding overflow-hidden no-select clickable customScroll ">
+          <app-emotion-list [emotionType]="'positive'" [editable]="true" [emotions]="posEmotions"></app-emotion-list>
+        </div>
+        <div class="col panel-desktop xxtall shadow no-padding overflow-hidden no-select clickable customScroll">
+          <app-emotion-list [emotionType]="'negative'" [editable]="true" [emotions]="negEmotions"></app-emotion-list>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col panel-desktop shadow">
+          <input type="text" class="input-desktop marg-top-bot" placeholder="TAGS" (input)="this.tags = $event.target.value" [value]="this.tags">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col panel-desktop clickable no-select button shadow" (click)="submit()">
+          Save!
+        </div>
+      </div>
+    </div>
   </div>
 </div>

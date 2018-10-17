@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SharedVarsService} from '../../services/shared-vars.service';
 import {Emotion} from '../../classes/emotion';
 import {RestServiceService} from '../../services/rest-service.service';
+import {ResponsiveService} from '../../services/responsive.service';
 
 @Component({
   selector: 'app-read-mood',
@@ -15,7 +16,7 @@ export class ReadMoodComponent implements OnInit {
 
 
 
-  constructor(public sharedVars: SharedVarsService,public rest: RestServiceService) {
+  constructor(public sharedVars: SharedVarsService,public rest: RestServiceService, public responsive: ResponsiveService) {
 
     this.posEmotions = new Array();
     this.negEmotions = new Array();

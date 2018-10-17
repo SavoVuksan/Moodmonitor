@@ -9,6 +9,7 @@ import {Emotion} from '../../classes/emotion';
 export class EmotionListComponent implements OnInit {
   @Input()
   editable: boolean;
+
   @Input()
   emotionType: string;
   @Input()

@@ -1,3 +1,7 @@
+
+<div *ngIf="this.responsive.getMobile()">
+
+
 <div class="row">
   <div class="col shadow short panel">
     <h3 class="center-hv">
@@ -16,7 +20,58 @@
 </div>
 <div class="row">
   <div class="col shadow short panel">
+    <input  placeholder="TAGS" class="input-oneLine input-focus"  [value]="this.sharedVars.selectedEntry.tags" type="text" disabled>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col shadow xtall panel">
+    <textarea placeholder="Talk about your day!" class="input-paragraph input-focus"  [value] = "this.sharedVars.selectedEntry.moodText" cols="30" rows="10" disabled></textarea>
 
   </div>
 </div>
 
+</div>
+
+<!-- DESKTOP VIEW !-->
+
+<div *ngIf="!this.responsive.getMobile()">
+  <div class="row">
+    <div class="col title-desktop">
+      <h2 class="text-center">Your Mood on {{this.sharedVars.selectedDay.toLocaleDateString()}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col panel-desktop title shadow">
+          <h3>TITLE</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col panel-desktop shadow para-tall customScroll">
+          <p>
+            {{this.sharedVars.selectedEntry.moodText}}
+
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col panel-desktop xxtall shadow no-padding overflow-hidden no-select clickable customScroll ">
+          <app-emotion-list [emotionType]="'positive'" [editable]="false" [emotions]="posEmotions"></app-emotion-list>
+        </div>
+        <div class="col panel-desktop xxtall shadow no-padding overflow-hidden no-select clickable customScroll">
+          <app-emotion-list [emotionType]="'negative'" [editable]="false" [emotions]="negEmotions"></app-emotion-list>
+        </div>
+    </div>
+      <div class="row">
+        <div class="col panel-desktop shadow tags">
+          <p>
+            {{this.sharedVars.selectedEntry.tags}}
+          </p>
+        </div>
+      </div>
+  </div>
+</div>

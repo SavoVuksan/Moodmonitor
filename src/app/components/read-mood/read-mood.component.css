@@ -1,0 +1,19 @@
+.title> h3{
+margin-top: 10px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+p{
+
+}
+.para-tall{
+  padding-top: 5px;
+  padding-left: 15px;
+  height: 400px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.tags{
+  padding-top: 10px;
+  height: 50px;
+}

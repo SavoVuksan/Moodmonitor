@@ -3,6 +3,7 @@ import {RestServiceService} from '../../services/rest-service.service';
 import {SharedVarsService} from '../../services/shared-vars.service';
 import {Entry} from '../../classes/entry';
 import {Router} from '@angular/router';
+import {ResponsiveService} from '../../services/responsive.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,9 @@ export class DashboardComponent implements OnInit {
 
   private entry: Entry;
 
-  constructor(private rest:RestServiceService,private sharedVars:SharedVarsService, private router: Router) {
+  public isMobile;
+
+  constructor(private rest:RestServiceService,private sharedVars:SharedVarsService, private router: Router, public responsive:ResponsiveService) {
 
   }
 
@@ -54,6 +57,7 @@ export class DashboardComponent implements OnInit {
 
   routeToLastMood(){
     this.sharedVars.selectedEntry = this.entry;
+    this.sharedVars.selectedDay = new Date(this.entry.date);
 
     this.router.navigateByUrl('/readMood');
   }

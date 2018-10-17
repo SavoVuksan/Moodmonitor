@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
+import {ResponsiveService} from '../../services/responsive.service';
 
 @Component({
   selector: 'app-navigation',
@@ -10,7 +11,7 @@ export class NavigationComponent implements OnInit {
 
   isActive : boolean;
 
-  constructor() {
+  constructor(public responsive: ResponsiveService) {
     this.isActive = false;
   }
 

@@ -14,3 +14,11 @@ You enter your feeling of a day in. Like Angry Furstrated happy satisfied etc. T
 *   Angular
 *   Bootstrap
 *   Material?
+
+## Ideas
+Statistics
+* Monat mit den meisten Einträgen
+* Graph mit positiven Einträgen und negativen Einträgen pro Monat
+* Tag search
+* Tag assoziert mit pos/neg Emotionen
+* 

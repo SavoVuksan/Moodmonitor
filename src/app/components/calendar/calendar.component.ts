@@ -31,7 +31,9 @@ export class CalendarComponent implements OnInit {
     let fromTo = this.getRange();
 
     this.rest.getRangeEntries(fromTo[0],fromTo[1]).subscribe((data) =>{
-      data.forEach((element) =>{
+      let ent = data as Entry[];
+
+      ent.forEach((element) =>{
         let entry = new Entry(new Date(element.date));
         entry.moodText = element.moodText;
         entry.tags = element.tags;
@@ -109,11 +111,14 @@ export class CalendarComponent implements OnInit {
         const selDate = new Date(this.selectedDate);
         selDate.setDate(field);
         this.sharedVars.selectedDay = selDate;
-        // WEIL ICH GLAUB DAS ICH ZUHAUSE MICH SEHR UNWOHL FÜHL UND DORT NICHT RUNTERKOMMEN KANN UND DESWEGEN MIR DENK HEY ICH WILL
-        // WEG UND DANN MACH ICH KEINE WORKOUTS
+
         this.router.navigateByUrl('/entryList');
       }else{
-
+         this.sharedVars.selectedEntry = this.getSelectedDayEntries(field)[0];
+        const selDate = new Date(this.selectedDate);
+        selDate.setDate(field);
+        this.sharedVars.selectedDay = selDate;
+        this.router.navigateByUrl('/readMood');
       }
     }
   }

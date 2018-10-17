@@ -65,6 +65,11 @@ h3 > span{
 .nav-element{
   padding: 0px;
 }
+
+.mar-left{
+  margin-left: 25px;
+}
+
 .verticalStripe{
   position: absolute;
   top: 50%;
@@ -106,4 +111,11 @@ h3 > span{
   font-weight: normal;
   margin-top: 6px;
   display: inline-block;
+}
+
+
+.nav-desktop{
+  background-color: #fff;
+  height: 100vh;
+  z-index: 1;
 }

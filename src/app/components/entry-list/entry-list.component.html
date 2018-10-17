@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="row" *ngFor="let entry of this.sharedVars.selectedDayEntries; let i = index">
-  <div class="col panel tall shadow ">
+  <div class="col panel tall shadow " (click)="goToEntry(entry)">
 
     <p class="marg-top  overflow-hidden-no-scroll">
       <span [ngClass]="this.sharedVars.dayType(entry)" class="entry-type white-text center-text font-italic">{{i+1}}</span>
