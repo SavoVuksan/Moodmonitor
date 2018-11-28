@@ -1,15 +1,35 @@
-
+<div *ngIf="this.responsive.getMobile()" class="no-select">
 <div class="row">
   <div class="col panel short shadow">
     <h3 class="center-hv">{{this.sharedVars.selectedDay.toLocaleDateString()}}</h3>
   </div>
 </div>
 <div class="row" *ngFor="let entry of this.sharedVars.selectedDayEntries; let i = index">
-  <div class="col panel tall shadow " (click)="goToEntry(entry)">
+  <div class="col panel short shadow " (click)="goToEntry(entry)">
 
-    <p class="marg-top  overflow-hidden-no-scroll">
+    <p class="marg-top text-dark-gray  overflow-hidden-no-scroll">
       <span [ngClass]="this.sharedVars.dayType(entry)" class="entry-type white-text center-text font-italic">{{i+1}}</span>
-      {{entry.moodText}}
+      {{entry.title | uppercase}}
     </p>
+  </div>
+</div>
+
+</div>
+
+<!-- DESKTOP VIEW !-->
+<div *ngIf="!this.responsive.getMobile()" class="no-select">
+  <div class="row">
+    <div class="col">
+      <h3 class="marg-top underline  pad-bot">{{this.sharedVars.selectedDay.toLocaleDateString()}}</h3>
+    </div>
+  </div>
+
+  <div class="row text-left" *ngFor="let entry of this.sharedVars.selectedDayEntries; let i = index">
+    <div class="col" (click)="goToEntry(entry)">
+      <h4 class="desktop-list-entry clickable">
+        <span [ngClass]="this.sharedVars.dayType(entry)" class="entry-type white-text center-text font-italic">{{i+1}}</span>
+        {{entry.title | uppercase}}
+      </h4>
+    </div>
   </div>
 </div>

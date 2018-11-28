@@ -46,6 +46,7 @@ export class WriteMoodComponent implements OnInit {
     let entry = new Entry(new Date());
     entry.tags = this.tags;
     entry.moodText = this.moodText;
+    entry.title = this.title;
     entry.posEmotions = this.posEmotions.filter((element) =>{
       if(element.isActive){
         return element;

@@ -5,14 +5,38 @@
   border-radius: 30px;
 
 }
-p{
-  height: 135px;
-}
+
 span{
   padding-right: 4px;
 }
 
 .marg-top{
-  margin: 20px 20px 20px 20px;
+  margin: 25px 20px 20px 20px;
 
+}
+.pad-bot{
+  padding-bottom: 20px;
+}
+
+.underline{
+  border-bottom: #4D4D4D;
+  border-bottom-style: solid;
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+.desktop-list-entry{
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 10px 0px 10px 0px;
+  background-color: #fff;
+  color: #4D4D4D;
+  transition: background-color 0.2s;
+}
+.desktop-list-entry:hover{
+  background-color: #dddddd;
+}
+.text-dark-gray{
+  color: #4D4D4D;
 }

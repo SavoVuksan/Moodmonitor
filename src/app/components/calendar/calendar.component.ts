@@ -3,6 +3,7 @@ import {Entry} from '../../classes/entry';
 import {RestServiceService} from '../../services/rest-service.service';
 import {Router} from '@angular/router';
 import {SharedVarsService} from '../../services/shared-vars.service';
+import {ResponsiveService} from '../../services/responsive.service';
 
 @Component({
   selector: 'app-calendar',
@@ -20,7 +21,7 @@ export class CalendarComponent implements OnInit {
 
   entries: Entry[];
 
-  constructor(private rest: RestServiceService,private router: Router,private sharedVars:SharedVarsService) {
+  constructor(private rest: RestServiceService,private router: Router,private sharedVars:SharedVarsService,public responsive: ResponsiveService) {
     this.calendarRows = Array(5);
     this.calendarCols = Array(7);
     this.dayCount = this.daysInMonth(new Date());
@@ -37,11 +38,16 @@ export class CalendarComponent implements OnInit {
         let entry = new Entry(new Date(element.date));
         entry.moodText = element.moodText;
         entry.tags = element.tags;
+        entry.title = element.title
         entry.posEmotions = element.posEmotions;
         entry.negEmotions = element.negEmotions;
         this.entries.push(entry);
       });
+
     });
+
+
+    //this.sharedVars.selectedDayEntries = this.getSelectedDayEntries()
   }
 
   ngOnInit() {
@@ -112,13 +118,21 @@ export class CalendarComponent implements OnInit {
         selDate.setDate(field);
         this.sharedVars.selectedDay = selDate;
 
-        this.router.navigateByUrl('/entryList');
+        if(this.responsive.getMobile()) {
+          this.router.navigateByUrl('/entryList');
+        }
       }else{
          this.sharedVars.selectedEntry = this.getSelectedDayEntries(field)[0];
         const selDate = new Date(this.selectedDate);
         selDate.setDate(field);
         this.sharedVars.selectedDay = selDate;
-        this.router.navigateByUrl('/readMood');
+        if(this.responsive.getMobile()) {
+
+
+          this.router.navigateByUrl('/readMood');
+        }else{
+          this.sharedVars.selectedDayEntries = this.getSelectedDayEntries(field);
+        }
       }
     }
   }

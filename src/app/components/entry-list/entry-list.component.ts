@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Entry} from '../../classes/entry';
 import {SharedVarsService} from '../../services/shared-vars.service';
 import {Router} from '@angular/router';
+import {ResponsiveService} from '../../services/responsive.service';
 
 @Component({
   selector: 'app-entry-list',
@@ -13,7 +14,7 @@ export class EntryListComponent implements OnInit {
 
 
 
-  constructor(public sharedVars: SharedVarsService,private router: Router) {
+  constructor(public sharedVars: SharedVarsService,private router: Router,public responsive: ResponsiveService) {
 
   }
 

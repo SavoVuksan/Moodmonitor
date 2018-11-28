@@ -9,6 +9,13 @@
     </h3>
   </div>
 </div>
+  <div class="row">
+    <div class="col shadow short panel">
+      <h3 class="center-hv">
+        {{this.sharedVars.selectedEntry.title}}
+      </h3>
+    </div>
+  </div>
 <div class="row">
   <div class="col shadow tall panel no-padding overflow-hidden">
     <app-emotion-list [editable]="false" [emotionType]="'positive'" [emotions]="this.posEmotions"></app-emotion-list>
@@ -45,7 +52,7 @@
     <div class="col">
       <div class="row">
         <div class="col panel-desktop title shadow">
-          <h3>TITLE</h3>
+          <h3>{{this.sharedVars.selectedEntry.title}} &nbsp;</h3>
         </div>
       </div>
       <div class="row">

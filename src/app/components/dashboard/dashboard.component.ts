@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
       this.entry = new Entry(data['date']);
       this.entry.moodText = data['moodText'];
       this.entry.tags = data['tags'];
+      this.entry.title = data['title'];
       this.entry.posEmotions = data['posEmotions'];
       this.entry.negEmotions = data['negEmotions'];
       if(this.entry.posEmotions.length > 0){

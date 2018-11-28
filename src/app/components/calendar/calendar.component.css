@@ -58,6 +58,9 @@ h3{
   margin: 10px 20px 10px 20px;
   font-size: 2em;
 }
+.selector{
+  text-align: center;
+}
 .month-selector{
   margin-bottom: 20px;
 }
@@ -85,6 +88,22 @@ h3{
 }
 .neut{
   border-color: #4D4D4D;
+}
+
+.max-width{
+  max-width: 800px;
+}
+.min-width{
+  min-width: 410px;
+}
+
+.panel-desktop-xl{
+  height: 530px;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow: auto;
 }
 
 @media all and (max-width: 372px){

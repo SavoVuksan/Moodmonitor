@@ -4,6 +4,7 @@ export class Entry {
   public date : Date;
   public tags : string;
   public moodText : string;
+  public title : string;
   public posEmotions: Emotion[];
   public negEmotions: Emotion[];
 
@@ -13,6 +14,7 @@ export class Entry {
     this.moodText = '';
     this.posEmotions = new Array();
     this.negEmotions = new Array();
+    this.title = '';
   }
 
 }
