@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EntryListComponent } from './components/entry-list/entry-list.component';
 import { ReadMoodComponent } from './components/read-mood/read-mood.component';
+import { FileSaverModule } from 'ngx-filesaver';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -40,7 +41,8 @@ const appRoutes : Routes = [
       appRoutes,
       { enableTracing: false}
     ),
-    HttpClientModule
+    HttpClientModule,
+    FileSaverModule
   ],
   providers: [],
   bootstrap: [AppComponent]
