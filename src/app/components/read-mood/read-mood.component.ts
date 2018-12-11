@@ -31,7 +31,7 @@ export class ReadMoodComponent implements OnInit {
       this.posEmotions.map((value) =>{
 
         if(this.sharedVars.selectedEntry.posEmotions.find((val) =>{
-          return val.name === value.name;
+          return val.name.toLowerCase() === value.name.toLowerCase();
         })){
           value.isActive = true;
         }
@@ -47,7 +47,7 @@ export class ReadMoodComponent implements OnInit {
       this.negEmotions.map((value) =>{
 
         if(this.sharedVars.selectedEntry.negEmotions.find((val) =>{
-          return val.name === value.name;
+          return val.name.toLowerCase() === value.name.toLowerCase();
         })){
           value.isActive = true;
         }

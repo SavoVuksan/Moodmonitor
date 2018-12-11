@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {RestServiceService} from '../../services/rest-service.service';
+import {SharedVarsService} from '../../services/shared-vars.service';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,10 @@ import {RestServiceService} from '../../services/rest-service.service';
 export class SearchComponent implements OnInit {
 
   searchText: string;
-
+  @Input()
+    searching: boolean;
+  @Output()
+    searchingChange: EventEmitter<boolean> = new EventEmitter();
   regexDate = '[@]\\d{2}[.]\\d{2}.\\d{4}';
   regexEmotion = '[/]\\w\\D\\S+';
   regexTag = '[#]\\w+';
@@ -20,7 +24,7 @@ export class SearchComponent implements OnInit {
   emotions: string[];
   tags: string[];
 
-  constructor(public rest: RestServiceService) {
+  constructor(public rest: RestServiceService,private vars:SharedVarsService) {
     this.dates = new Array();
     this.emotions = new Array();
     this.tags = new Array();
@@ -34,6 +38,15 @@ export class SearchComponent implements OnInit {
 
   }
 
+  inputSearchText(text:string){
+    this.searchText = text;
+    if(this.searchText.length < 1){
+      this.searching = false;
+    }
+    this.searchingChange.emit(this.searching);
+
+  }
+
   isStringEmpty(text: string): boolean{
     return text.length === 0;
   }
@@ -41,6 +54,8 @@ export class SearchComponent implements OnInit {
   public search(){
 
     this.rest.searchEntries().subscribe(value => {
+      this.searching = true;
+      this.searchingChange.emit(this.searching);
       this.filterDate();
       this.filterEmotion();
       this.filterTag();
@@ -65,7 +80,7 @@ export class SearchComponent implements OnInit {
 
         resTags.forEach((tag) =>{
           this.tags.forEach((x) =>{
-            if(x === tag){
+            if(x === tag.replace('#','')){
               filter = true;
             }
           });
@@ -101,6 +116,11 @@ export class SearchComponent implements OnInit {
         return filter;
       });
       console.log(output);
+      output = output.map((entry) =>{
+        entry.date = new Date(entry.date);
+        return entry;
+      });
+      this.vars.searchEntries = output;
     });
 
     this.dates.length = 0;
@@ -113,7 +133,9 @@ export class SearchComponent implements OnInit {
     if(d !== null){
       d.forEach((value, index) => {
         value =value.replace('@','');
-        let date = new Date(value);
+        let arr = value.split('.');
+        let date = new Date();
+        date.setFullYear(parseInt(arr[2]),parseInt(arr[1]-1),parseInt(arr[0]));
         this.dates.push(date);
 
       });

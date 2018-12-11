@@ -40,7 +40,7 @@
     <div class="col title-desktop">
       <h2 class="text-center">Dashboard
         </h2>
-      <app-search></app-search>
+      <app-search [(searching)]="this.search"></app-search>
 
     </div>
   </div>
@@ -81,7 +81,7 @@
 
   </div>
   <ng-template #searchComp>
-SEARCH
+<app-search-entry-list></app-search-entry-list>
   </ng-template>
 
 </div>

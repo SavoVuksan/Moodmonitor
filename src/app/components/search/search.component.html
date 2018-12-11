@@ -1,5 +1,5 @@
 
 <div class="search-component">
-  <input type="text" (input)="searchText = $event.target.value"  >
+  <input type="text" (input)="inputSearchText($event.target.value)"  >
   <img src="../../../assets/icons/Search.svg" id="search" alt="" (click)="search()">
 </div>

@@ -3,6 +3,5 @@
     <li
       [ngClass]="e.isActive ? (emotionType === 'positive' ? 'positive' : 'negative') : ''" (click)="(editable?e.isActive = !e.isActive:'')"
     >{{e.name}}</li>
-
   </ul>
 

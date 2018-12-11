@@ -10,10 +10,13 @@ export class SharedVarsService {
   public selectedDayEntries: Entry[];
   public selectedEntry: Entry;
 
+  public searchEntries: Array<Entry>;
+
   constructor() {
     this.selectedDay = new Date();
     this.selectedDayEntries = new Array();
     this.selectedEntry = new Entry(new Date());
+    this.searchEntries = new Array<Entry>();
   }
 
   dayType(entry: Entry){

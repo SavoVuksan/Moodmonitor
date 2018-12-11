@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {RestServiceService} from '../../services/rest-service.service';
+import {Entry} from '../../classes/entry';
+import {SharedVarsService} from '../../services/shared-vars.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-entry-list',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchEntryListComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private vars:SharedVarsService,private router: Router) {
+
+  }
 
   ngOnInit() {
+
+  }
+
+  viewEntry(e: Entry){
+    this.vars.selectedEntry = e;
+    this.vars.selectedDay = e.date;
+    this.router.navigateByUrl('readMood');
   }
 
 }

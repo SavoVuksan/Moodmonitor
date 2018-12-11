@@ -14,9 +14,7 @@ import { EntryListComponent } from './components/entry-list/entry-list.component
 import { ReadMoodComponent } from './components/read-mood/read-mood.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchEntryListComponent } from './components/search-entry-list/search-entry-list.component';
-=======
 import { FileSaverModule } from 'ngx-filesaver';
->>>>>>> 2d3d3ba443e66c808a6aa9b1aacab026ac1e5d82
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
