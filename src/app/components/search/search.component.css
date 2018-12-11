@@ -1,0 +1,8 @@
+#search{
+  width: 40px ;
+}
+.search-component{
+  position: absolute;
+  right: 15px;
+  top: 20px;
+}

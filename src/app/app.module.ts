@@ -12,6 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EntryListComponent } from './components/entry-list/entry-list.component';
 import { ReadMoodComponent } from './components/read-mood/read-mood.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchEntryListComponent } from './components/search-entry-list/search-entry-list.component';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -32,7 +34,9 @@ const appRoutes : Routes = [
     EmotionListComponent,
     CalendarComponent,
     EntryListComponent,
-    ReadMoodComponent
+    ReadMoodComponent,
+    SearchComponent,
+    SearchEntryListComponent
   ],
   imports: [
     BrowserModule,

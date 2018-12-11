@@ -35,5 +35,8 @@ export class RestServiceService {
   public getRangeEntries(from: Date, to: Date){
     return this.http.get(`http://${this.ip}:3000/getRangeEntries?from=${from}&to=${to}`);
   }
+  public searchEntries(){
+    return this.http.get(`http://${this.ip}:3000/searchEntries`);
+  }
 
 }

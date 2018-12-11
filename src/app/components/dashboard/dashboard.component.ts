@@ -22,8 +22,10 @@ export class DashboardComponent implements OnInit {
 
   public isMobile;
 
-  constructor(private rest:RestServiceService,private sharedVars:SharedVarsService, private router: Router, public responsive:ResponsiveService) {
+  public search: boolean;
 
+  constructor(private rest:RestServiceService,private sharedVars:SharedVarsService, private router: Router, public responsive:ResponsiveService) {
+    this.search = true;
   }
 
   ngOnInit() {
