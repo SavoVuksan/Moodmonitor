@@ -15,10 +15,10 @@ export class RestServiceService {
   }
 
   public getPositiveEmotions(){
-    return this.http.get(`http://${this.ip}:3000/positiveEmotions`);
+    return this.http.get(`http://${this.ip}:3000/getPositiveEmotions`);
   }
   public getNegativeEmotions(){
-    return this.http.get(`http://${this.ip}:3000/negativeEmotions`);
+    return this.http.get(`http://${this.ip}:3000/getNegativeEmotions`);
   }
   public postEntry(entry: Entry){
     return this.http.post(`http://${this.ip}:3000/saveEntry`, entry );
@@ -26,17 +26,28 @@ export class RestServiceService {
   public getPosDays(){
     return this.http.get(`http://${this.ip}:3000/goodDayCount`);
   }
+
   public getNegDays(){
     return this.http.get(`http://${this.ip}:3000/badDayCount`);
   }
-  public getLastMood(){
-    return this.http.get(`http://${this.ip}:3000/lastMood`);
+  public getLastCreatedEntry(){
+    return this.http.get(`http://${this.ip}:3000/getLastEntry`,{withCredentials: true});
   }
   public getRangeEntries(from: Date, to: Date){
     return this.http.get(`http://${this.ip}:3000/getRangeEntries?from=${from}&to=${to}`);
   }
   public searchEntries(){
     return this.http.get(`http://${this.ip}:3000/searchEntries`);
+  }
+
+
+
+
+  public login(data){
+    return this.http.post(`http://${this.ip}:3000/login`,data,{observe: 'response', withCredentials: true});
+  }
+  public register(data){
+    return this.http.post(`http://${this.ip}:3000/register`,data);
   }
 
 }

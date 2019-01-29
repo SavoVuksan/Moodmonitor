@@ -15,6 +15,7 @@ import { ReadMoodComponent } from './components/read-mood/read-mood.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchEntryListComponent } from './components/search-entry-list/search-entry-list.component';
 import { FileSaverModule } from 'ngx-filesaver';
+import {CookieService} from 'ngx-cookie-service';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -48,7 +49,7 @@ const appRoutes : Routes = [
     HttpClientModule,
     FileSaverModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
