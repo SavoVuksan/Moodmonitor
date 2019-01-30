@@ -1,0 +1,30 @@
+.content{
+    width: 30%;
+    position: absolute;
+    left: 35%;
+    transform: translate(0%, 5%);
+}
+.loginDesktop{
+    height: 620px;
+}
+.login{
+    height: 550px;
+}
+.save{
+    width: 25%;
+    position: absolute;
+    left: 42.5%;
+}
+.register{
+    width: 40%;
+    position: absolute;
+    left: 35%;
+    transform: translate(0, 80%);
+}
+.greencolor{
+    background-color: mediumturquoise;
+    color: whitesmoke;
+}
+.registerWidth{
+    width: 100%;
+}

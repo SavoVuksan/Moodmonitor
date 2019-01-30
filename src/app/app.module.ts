@@ -13,9 +13,13 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { EntryListComponent } from './components/entry-list/entry-list.component';
 import { ReadMoodComponent } from './components/read-mood/read-mood.component';
 import { FileSaverModule } from 'ngx-filesaver';
+import { LoginComponent } from './components/login//login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const appRoutes : Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'dashboard' , component: DashboardComponent},
   {path: 'writeMood', component : WriteMoodComponent},
   {path: 'calendar', component: CalendarComponent},
@@ -33,7 +37,9 @@ const appRoutes : Routes = [
     EmotionListComponent,
     CalendarComponent,
     EntryListComponent,
-    ReadMoodComponent
+    ReadMoodComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

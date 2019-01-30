@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ResponsiveService} from './services/responsive.service';
+import { SharedVarsService } from './services/shared-vars.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {ResponsiveService} from './services/responsive.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(public responsive:ResponsiveService){
+  constructor(public responsive:ResponsiveService, public shared: SharedVarsService){
 
   }
 }
