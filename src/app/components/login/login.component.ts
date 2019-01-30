@@ -9,6 +9,8 @@ import { SharedVarsService } from '../../services/shared-vars.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  username: string = "Username";
+  password: string;
 
   constructor(private router: Router, public responsive:ResponsiveService, private shared: SharedVarsService) { }
 
@@ -16,7 +18,11 @@ export class LoginComponent implements OnInit {
   }
 
   submit(){
-    //User und Pw kontrollieren
+    //Änderungen im Username
+    if(this.username != "Username"){
+      //User und Pw kontrollieren
+
+    }
     this.router.navigateByUrl("/dashboard");
     this.shared.loggedIn = true;
   }

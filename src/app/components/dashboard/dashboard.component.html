@@ -1,7 +1,7 @@
 
 <div *ngIf="this.responsive.getMobile()">
 
-
+  <app-search></app-search>
   <div class="row">
     <div class="col panel tall shadow">
       <div class="smallDashboard-panel">
@@ -38,9 +38,13 @@
 <div *ngIf="!this.responsive.getMobile()">
   <div class="row">
     <div class="col title-desktop">
-      <h2 class="text-center">Dashboard</h2>
+      <h2 class="text-center">Dashboard
+        </h2>
+      <app-search [(searching)]="this.search"></app-search>
+
     </div>
   </div>
+  <div *ngIf="!search; else searchComp">
   <div class="row">
     <div class="col">
       <div class="row">
@@ -74,5 +78,10 @@
 
     </div>
   </div>
+
+  </div>
+  <ng-template #searchComp>
+<app-search-entry-list></app-search-entry-list>
+  </ng-template>
 
 </div>

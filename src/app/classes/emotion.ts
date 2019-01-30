@@ -7,3 +7,5 @@ export class Emotion {
     this.isActive = isActive;
   }
 }
+
+

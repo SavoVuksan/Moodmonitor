@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col panel overflow-hidden height-70 shadow ">
+    <div class="row" *ngFor="let e of this.vars.searchEntries">
+      <div class="col panel tall shadow" (click)="viewEntry(e)">
+      <h3 class="alignLeft">{{e.title}} {{e.date.toLocaleDateString()}}</h3>
+
+        <p>
+          {{e.moodText}}
+        </p>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

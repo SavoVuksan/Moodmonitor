@@ -43,7 +43,7 @@
 
   <div class="row marg-top"  *ngFor="let row of calendarRows; index as y">
     <div class="col " *ngFor="let col of calendarCols; index as x">
-      <div class="cal-day" >
+      <div class="cal-day" (click)="viewEntry(x+1+7*y)" >
         <div [ngClass]="(isFieldToday(x+1+7*y)? 'today': '')" class=""></div>
         <div [ngClass]="hasFieldEntry(x+1+7*y)" class=""></div>
         {{(((x+1)+7*y) <= dayCount ? (x+1)+7*y : (x+1)+7*y-dayCount)}}
@@ -112,7 +112,7 @@
 
           <div class="row marg-top"  *ngFor="let row of calendarRows; index as y">
             <div class="col " *ngFor="let col of calendarCols; index as x">
-              <div class="cal-day clickable">
+              <div class="cal-day clickable" (click)="viewEntry(x+1+7*y)">
                 <div [ngClass]="(isFieldToday(x+1+7*y)? 'today': '')" class=""></div>
                 <div [ngClass]="hasFieldEntry(x+1+7*y)" class=""></div>
                 {{(((x+1)+7*y) <= dayCount ? (x+1)+7*y : (x+1)+7*y-dayCount)}}
@@ -126,14 +126,14 @@
       </div>
 
     </div>
-    <!--
+
 <div class="col panel-desktop customScroll panel-desktop-xl shadow">
 
 
 <app-entry-list></app-entry-list>
 
 </div>
-!-->
+
   </div>
 
 

@@ -11,6 +11,7 @@ export class SharedVarsService {
   public selectedEntry: Entry;
 
   public loggedIn: boolean;
+  public searchEntries: Array<Entry>;
 
   constructor() {
     this.selectedDay = new Date();
@@ -18,6 +19,8 @@ export class SharedVarsService {
     this.selectedEntry = new Entry(new Date());
 
     this.loggedIn = false;
+    this.searchEntries = new Array<Entry>();
+    
   }
 
   dayType(entry: Entry){

@@ -31,7 +31,7 @@ export class ReadMoodComponent implements OnInit {
       this.posEmotions.map((value) =>{
 
         if(this.sharedVars.selectedEntry.posEmotions.find((val) =>{
-          return val.name === value.name;
+          return val.name.toLowerCase() === value.name.toLowerCase();
         })){
           value.isActive = true;
         }
@@ -47,7 +47,7 @@ export class ReadMoodComponent implements OnInit {
       this.negEmotions.map((value) =>{
 
         if(this.sharedVars.selectedEntry.negEmotions.find((val) =>{
-          return val.name === value.name;
+          return val.name.toLowerCase() === value.name.toLowerCase();
         })){
           value.isActive = true;
         }
@@ -62,6 +62,7 @@ export class ReadMoodComponent implements OnInit {
   }
 
   export(){
+    //Tag und Titel als String speichern
     let day = this.sharedVars.selectedDay.toLocaleDateString();
     let title = this.sharedVars.selectedEntry.title;
 
@@ -91,18 +92,21 @@ export class ReadMoodComponent implements OnInit {
       }
     }
 
+    //Text und Tags in Strings speichern
     let text = this.sharedVars.selectedEntry.moodText;
     let tagstring = this.sharedVars.selectedEntry.tags;
     let tags = "#"+tagstring.replace(" ", " #");
 
-
+    //Fileinhalt aus Strings zusammenfügen
     let file = day + "\n" + 
                title + 
                "\n \n Positive Emotions: " + pos + 
                "\n Negative Emotions: " + neg +
                "\n \n" + text +
                "\n Tags: " + tags;
+    //Namen des Titels bestimmen
     let filename = title+".txt";
+    //File speichern
     this.saveService.saveText(file, filename);
   }
 }

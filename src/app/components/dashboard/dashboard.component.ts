@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
 
   public isMobile;
 
+  public search: boolean;
+
   constructor(private rest:RestServiceService,private sharedVars:SharedVarsService, private router: Router, public responsive:ResponsiveService) {
 
   }
@@ -37,7 +39,7 @@ export class DashboardComponent implements OnInit {
       this.negDays = data['negDays'];
     });
 
-    this.rest.getLastMood().subscribe((data) =>{
+    this.rest.getLastCreatedEntry().subscribe((data) =>{
       this.entry = new Entry(data['date']);
       this.entry.moodText = data['moodText'];
       this.entry.tags = data['tags'];

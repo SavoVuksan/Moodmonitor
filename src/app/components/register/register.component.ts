@@ -19,8 +19,14 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(){
-    //Auf Doppelte überprüfen
-    if(this.password == this.repeatPw)
+    //Wurden ein Username und eine Email eingegeben?
+    if(this.username != "Username" && this.email != "Email"){
+      //Sind Passwort und das wiederholte Passwort gleich?
+      if(this.password == this.repeatPw){
+        //Auf Doppelte überprüfen
+
+      }
+    }
     this.router.navigateByUrl("/login");
   }
 

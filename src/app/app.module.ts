@@ -12,6 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { EntryListComponent } from './components/entry-list/entry-list.component';
 import { ReadMoodComponent } from './components/read-mood/read-mood.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchEntryListComponent } from './components/search-entry-list/search-entry-list.component';
 import { FileSaverModule } from 'ngx-filesaver';
 import { LoginComponent } from './components/login//login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -39,7 +41,9 @@ const appRoutes : Routes = [
     EntryListComponent,
     ReadMoodComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchComponent,
+    SearchEntryListComponent
   ],
   imports: [
     BrowserModule,
