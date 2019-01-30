@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {RestServiceService} from '../../services/rest-service.service';
+import {RestService} from '../../services/rest.service';
 import {SharedVarsService} from '../../services/shared-vars.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   emotions: string[];
   tags: string[];
 
-  constructor(public rest: RestServiceService,private vars:SharedVarsService) {
+  constructor(public rest: RestService, private vars:SharedVarsService) {
     this.dates = new Array();
     this.emotions = new Array();
     this.tags = new Array();
@@ -135,7 +135,7 @@ export class SearchComponent implements OnInit {
         value =value.replace('@','');
         let arr = value.split('.');
         let date = new Date();
-        date.setFullYear(parseInt(arr[2]),parseInt(arr[1]-1),parseInt(arr[0]));
+        date.setFullYear(parseInt(arr[2]),parseInt(arr[1])-1,parseInt(arr[0]));
         this.dates.push(date);
 
       });

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RestServiceService} from '../../services/rest-service.service';
+import {RestService} from '../../services/rest.service';
 import {SharedVarsService} from '../../services/shared-vars.service';
 import {Entry} from '../../classes/entry';
 import {Router} from '@angular/router';
@@ -24,19 +24,19 @@ export class DashboardComponent implements OnInit {
 
   public search: boolean;
 
-  constructor(private rest:RestServiceService,private sharedVars:SharedVarsService, private router: Router, public responsive:ResponsiveService) {
+  constructor(private rest:RestService, private sharedVars:SharedVarsService, private router: Router, public responsive:ResponsiveService) {
 
   }
 
   ngOnInit() {
     this.entry = new Entry(new Date());
 
-    this.rest.getPosDays().subscribe((data) =>{
-      this.posDays = data['posDays'];
+    this.rest.getGoodDayCount().subscribe((data) =>{
+      this.posDays = data.goodDayCount;
     });
 
-    this.rest.getNegDays().subscribe((data) =>{
-      this.negDays = data['negDays'];
+    this.rest.getBadDayCount().subscribe((data) =>{
+      this.negDays = data.badDayCount;
     });
 
     this.rest.getLastCreatedEntry().subscribe((data) =>{

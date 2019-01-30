@@ -6,7 +6,7 @@ import {catchError} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class RestServiceService {
+export class RestService {
 
   private ip = window.location.hostname;
   private port = 3000;
@@ -23,11 +23,10 @@ export class RestServiceService {
   public postEntry(entry: Entry){
     return this.http.post(`http://${this.ip}:3000/saveEntry`, entry );
   }
-  public getPosDays(){
+  public getGoodDayCount(){
     return this.http.get(`http://${this.ip}:3000/goodDayCount`);
   }
-
-  public getNegDays(){
+  public getBadDayCount(){
     return this.http.get(`http://${this.ip}:3000/badDayCount`);
   }
   public getLastCreatedEntry(){
