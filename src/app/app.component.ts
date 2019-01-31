@@ -13,16 +13,7 @@ export class AppComponent {
   title = 'app';
 
   constructor(public responsive:ResponsiveService, public rest: RestService, public shared: SharedVarsService){
-    //TODO: Change this to real login when avaiable
-    this.rest.login({
-      "username":"savo",
-      "password":"1234"
-    }).subscribe((res) =>{
-      console.log(res);
-
-
-    });
-
+      this.shared.loggedIn = true;
 
   }
 }

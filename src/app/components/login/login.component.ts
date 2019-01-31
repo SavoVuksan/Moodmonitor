@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ResponsiveService } from '../../services/responsive.service';
 import { SharedVarsService } from '../../services/shared-vars.service';
+import {RestService} from '../../services/rest.service';
 
 @Component({
   selector: 'app-login',
@@ -9,22 +10,30 @@ import { SharedVarsService } from '../../services/shared-vars.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string = "Username";
+  username: string ;
   password: string;
 
-  constructor(private router: Router, public responsive:ResponsiveService, private shared: SharedVarsService) { }
+  errorText: string;
+
+  constructor(private router: Router, public responsive:ResponsiveService, private shared: SharedVarsService,private rest: RestService) { }
 
   ngOnInit() {
+    this.username = "";
+    this.password = "";
+    this.errorText = "";
   }
 
   submit(){
-    //Änderungen im Username
-    if(this.username != "Username"){
-      //User und Pw kontrollieren
 
-    }
-    this.router.navigateByUrl("/dashboard");
-    this.shared.loggedIn = true;
+    this.rest.login({username: this.username, password: this.password}).subscribe(data =>{
+      if((<any>data.body).text === 'success'){
+        this.router.navigateByUrl("/dashboard");
+        this.shared.loggedIn = true;
+      }else{
+        this.errorText = (<any>data.body).text;
+      }
+    });
+
   }
 
   toRegister(){

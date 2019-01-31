@@ -43,6 +43,7 @@ export class RestService {
 
 
   public login(data){
+    console.log(data);
     return this.http.post(`http://${this.ip}:3000/login`,data,{observe: 'response', withCredentials: true});
   }
   public register(data){

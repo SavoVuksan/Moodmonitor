@@ -31,7 +31,8 @@ export class ReadMoodComponent implements OnInit {
       this.posEmotions.map((value) =>{
 
         if(this.sharedVars.selectedEntry.positiveEmotions.find((val) =>{
-          return val === value.id;
+
+          return val.id === value.id;
         })){
           value.isActive = true;
         }

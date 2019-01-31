@@ -17,16 +17,19 @@ import { SearchEntryListComponent } from './components/search-entry-list/search-
 import { FileSaverModule } from 'ngx-filesaver';
 import { LoginComponent } from './components/login//login.component';
 import { RegisterComponent } from './components/register/register.component';
+import {FormsModule} from '@angular/forms';
+import {AuthGuard} from './auth/auth.guard';
+import {DataGuard} from './auth/data.guard';
 
 const appRoutes : Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'dashboard' , component: DashboardComponent},
-  {path: 'writeMood', component : WriteMoodComponent},
-  {path: 'calendar', component: CalendarComponent},
-  {path: 'entryList', component: EntryListComponent},
-  {path: 'readMood', component: ReadMoodComponent}
+  {path: 'dashboard' , component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'writeMood', component : WriteMoodComponent, canActivate: [AuthGuard]},
+  {path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard]},
+  {path: 'entryList', component: EntryListComponent, canActivate: [AuthGuard]},
+  {path: 'readMood', component: ReadMoodComponent, canActivate: [AuthGuard, DataGuard]}
 ]
 
 @NgModule({
@@ -52,7 +55,8 @@ const appRoutes : Routes = [
       { enableTracing: false}
     ),
     HttpClientModule,
-    FileSaverModule
+    FileSaverModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

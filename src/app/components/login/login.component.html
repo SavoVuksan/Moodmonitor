@@ -42,12 +42,12 @@
       </div>
       <div class="row">
         <div class="col panel short">
-          <input type="text" placeholder="Username" class="input-oneLine input-focus" [value]="username">
+          <input type="text" placeholder="Username" class="input-oneLine input-focus" [(ngModel)]="username">
         </div>
       </div>
       <div class="row">
         <div class="col panel short">
-          <input type="password" placeholder="Password" class="input-oneLine input-focus" [value]="password">
+          <input type="password" placeholder="Password" class="input-oneLine input-focus" [(ngModel)]="password">
         </div>
       </div>
       <div class="row save text-center">
@@ -60,6 +60,10 @@
           Register
         </div>
       </div>
+      <div class="row">
+        {{this.errorText}}
+      </div>
     </div>
   </div>
 </div>
+
