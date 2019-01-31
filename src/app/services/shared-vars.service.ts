@@ -20,8 +20,8 @@ export class SharedVarsService {
   }
 
   dayType(entry: Entry){
-    if(entry.posEmotions.length > 0){
-      if(entry.negEmotions.length > 0){
+    if(entry.positiveEmotions.length > 0){
+      if(entry.negativeEmotions.length > 0){
         return 'gray';
       }else{
         return 'blue';

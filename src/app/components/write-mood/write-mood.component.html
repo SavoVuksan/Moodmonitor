@@ -15,10 +15,10 @@
   </div>
 <div class="row">
   <div class="col panel tall shadow no-padding overflow-hidden">
-    <app-emotion-list [emotions]="this.posEmotions" [editable]="true" [emotionType]="'positive'"></app-emotion-list>
+    <app-emotion-list [emotions]="this.positiveEmotions" [editable]="true" [emotionType]="'positive'"></app-emotion-list>
   </div>
   <div class="col panel tall shadow no-padding overflow-hidden">
-  <app-emotion-list [emotions]="this.negEmotions" [editable]="true" [emotionType]="'negative'"></app-emotion-list>
+  <app-emotion-list [emotions]="this.negativeEmotions" [editable]="true" [emotionType]="'negative'"></app-emotion-list>
 </div>
 
 </div>
@@ -29,7 +29,7 @@
 </div>
 <div class="row">
   <div class="col panel xtall shadow">
-    <textarea placeholder="Talk about your Day" class="input-paragraph input-focus" (input)="this.moodText = $event.target.value" [value] = "this.moodText" cols="30" rows="10"></textarea>
+    <textarea placeholder="Talk about your Day" class="input-paragraph input-focus" (input)="this.moodText = $event.target.value" [value] = "this.text" cols="30" rows="10"></textarea>
   </div>
 </div>
 <div class="row">

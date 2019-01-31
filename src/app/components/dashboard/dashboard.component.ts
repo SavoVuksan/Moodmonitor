@@ -32,35 +32,37 @@ export class DashboardComponent implements OnInit {
     this.entry = new Entry(new Date());
 
     this.rest.getGoodDayCount().subscribe((data) =>{
-      this.posDays = data.goodDayCount;
+      this.posDays = data['goodDayCount'];
     });
 
     this.rest.getBadDayCount().subscribe((data) =>{
-      this.negDays = data.badDayCount;
+      this.negDays = data['badDayCount'];
     });
 
     this.rest.getLastCreatedEntry().subscribe((data) =>{
-      this.entry = new Entry(data['date']);
-      this.entry.moodText = data['moodText'];
-      this.entry.tags = data['tags'];
-      this.entry.title = data['title'];
-      this.entry.posEmotions = data['posEmotions'];
-      this.entry.negEmotions = data['negEmotions'];
-      if(this.entry.posEmotions.length > 0){
-        if(this.entry.negEmotions.length > 0){
-          this.lMDayType = 0;
-        }else{
-          this.lMDayType = 1;
+      if(data) {
+        this.entry = new Entry(data['createdOn']);
+        this.entry.text = data['text'];
+        this.entry.tags = data['tags'];
+        this.entry.title = data['title'];
+        this.entry.positiveEmotions = data['positiveEmotions'];
+        this.entry.negativeEmotions = data['negativeEmotions'];
+        if (this.entry.positiveEmotions.length > 0) {
+          if (this.entry.negativeEmotions.length > 0) {
+            this.lMDayType = 0;
+          } else {
+            this.lMDayType = 1;
+          }
+        } else {
+          this.lMDayType = -1;
         }
-      }else{
-        this.lMDayType = -1;
       }
     });
   }
 
   routeToLastMood(){
     this.sharedVars.selectedEntry = this.entry;
-    this.sharedVars.selectedDay = new Date(this.entry.date);
+    this.sharedVars.selectedDay = new Date(this.entry.createdOn);
 
     this.router.navigateByUrl('/readMood');
   }

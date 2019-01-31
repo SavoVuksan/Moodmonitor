@@ -1,19 +1,19 @@
 import {Emotion} from './emotion';
 
 export class Entry {
-  public date : Date;
-  public tags : string;
-  public moodText : string;
+  public createdOn : Date;
+  public tags : string[];
+  public text : string;
   public title : string;
-  public posEmotions: Emotion[];
-  public negEmotions: Emotion[];
+  public positiveEmotions: Emotion[];
+  public negativeEmotions: Emotion[];
 
   constructor(date){
-    this.date = date;
-    this.tags = '';
-    this.moodText = '';
-    this.posEmotions = new Array();
-    this.negEmotions = new Array();
+    this.createdOn = date;
+    this.tags = new Array<string>();
+    this.text = '';
+    this.positiveEmotions = new Array();
+    this.negativeEmotions = new Array();
     this.title = '';
   }
 

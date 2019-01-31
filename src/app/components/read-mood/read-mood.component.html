@@ -18,11 +18,11 @@
   </div>
 <div class="row">
   <div class="col shadow tall panel no-padding overflow-hidden">
-    <app-emotion-list [editable]="false" [emotionType]="'positive'" [emotions]="this.posEmotions"></app-emotion-list>
+    <app-emotion-list [editable]="false" [emotionType]="'positive'" [emotions]="this.positiveEmotions"></app-emotion-list>
 
   </div>
   <div class="col shadow tall panel no-padding overflow-hidden">
-    <app-emotion-list [editable]="false" [emotions]="this.negEmotions" [emotionType]="'negative'"></app-emotion-list>
+    <app-emotion-list [editable]="false" [emotions]="this.negativeEmotions" [emotionType]="'negative'"></app-emotion-list>
   </div>
 </div>
 <div class="row">
@@ -33,7 +33,7 @@
 </div>
 <div class="row">
   <div class="col shadow xtall panel">
-    <textarea placeholder="Talk about your day!" class="input-paragraph input-focus"  [value] = "this.sharedVars.selectedEntry.moodText" cols="30" rows="10" disabled></textarea>
+    <textarea placeholder="Talk about your day!" class="input-paragraph input-focus" [value] = "this.sharedVars.selectedEntry.text" cols="30" rows="10" disabled></textarea>
 
   </div>
 </div>
@@ -60,7 +60,7 @@
       <div class="row">
         <div class="col panel-desktop shadow para-tall customScroll">
           <p>
-            {{this.sharedVars.selectedEntry.moodText}}
+            {{this.sharedVars.selectedEntry.text}}
 
           </p>
         </div>
@@ -78,7 +78,7 @@
       <div class="row">
         <div class="col panel-desktop shadow tags">
           <p>
-            {{this.sharedVars.selectedEntry.tags}}
+            <span *ngFor="let tag of this.sharedVars.selectedEntry.tags" ><span *ngIf="tag !== ''">#{{tag}}</span> </span>
           </p>
         </div>
       </div>

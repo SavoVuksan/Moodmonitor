@@ -8,7 +8,7 @@ import {catchError} from 'rxjs/operators';
 })
 export class RestService {
 
-  private ip = window.location.hostname;
+  private ip = 'localhost';
   private port = 3000;
 
   constructor(private http: HttpClient) {
@@ -20,14 +20,14 @@ export class RestService {
   public getNegativeEmotions(){
     return this.http.get(`http://${this.ip}:3000/getNegativeEmotions`);
   }
-  public postEntry(entry: Entry){
-    return this.http.post(`http://${this.ip}:3000/saveEntry`, entry );
+  public saveEntry(entry: Entry){
+    return this.http.post(`http://${this.ip}:3000/saveEntry`, entry ,{withCredentials: true});
   }
   public getGoodDayCount(){
-    return this.http.get(`http://${this.ip}:3000/goodDayCount`);
+    return this.http.get(`http://${this.ip}:3000/goodDayCount`, {withCredentials: true});
   }
   public getBadDayCount(){
-    return this.http.get(`http://${this.ip}:3000/badDayCount`);
+    return this.http.get(`http://${this.ip}:3000/badDayCount`, {withCredentials: true});
   }
   public getLastCreatedEntry(){
     return this.http.get(`http://${this.ip}:3000/getLastEntry`,{withCredentials: true});

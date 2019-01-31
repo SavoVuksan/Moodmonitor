@@ -24,14 +24,14 @@ export class ReadMoodComponent implements OnInit {
     this.negEmotions = new Array();
 
     this.rest.getPositiveEmotions().subscribe((data) =>{
-      data[0]['positiveEmotions'].forEach((val) =>{
-        this.posEmotions.push(new Emotion(val,false));
+      (<Array<any>>data).forEach((val) =>{
+        this.posEmotions.push(new Emotion(val.type,val.name,false, val._id));
       });
 
       this.posEmotions.map((value) =>{
 
-        if(this.sharedVars.selectedEntry.posEmotions.find((val) =>{
-          return val.name.toLowerCase() === value.name.toLowerCase();
+        if(this.sharedVars.selectedEntry.positiveEmotions.find((val) =>{
+          return val === value.id;
         })){
           value.isActive = true;
         }
@@ -40,13 +40,13 @@ export class ReadMoodComponent implements OnInit {
     });
 
     this.rest.getNegativeEmotions().subscribe((data) =>{
-      data[0]['negativeEmotions'].forEach((val) =>{
-        this.negEmotions.push(new Emotion(val,false));
+      (<Array<any>>data).forEach((val) =>{
+        this.negEmotions.push(new Emotion(val.type,val.name,false,val._id));
       });
 
       this.negEmotions.map((value) =>{
 
-        if(this.sharedVars.selectedEntry.negEmotions.find((val) =>{
+        if(this.sharedVars.selectedEntry.negativeEmotions.find((val) =>{
           return val.name.toLowerCase() === value.name.toLowerCase();
         })){
           value.isActive = true;
@@ -67,33 +67,33 @@ export class ReadMoodComponent implements OnInit {
 
     //Array positiver Emotionen zu String umwandeln
     let pos = "";
-    for(let i = 0; i < this.sharedVars.selectedEntry.posEmotions.length; i++){
-      if(this.sharedVars.selectedEntry.posEmotions[i].isActive){
+    for(let i = 0; i < this.sharedVars.selectedEntry.positiveEmotions.length; i++){
+      if(this.sharedVars.selectedEntry.positiveEmotions[i].isActive){
         if(pos == ""){
-          pos = this.sharedVars.selectedEntry.posEmotions[i].name;
+          pos = this.sharedVars.selectedEntry.positiveEmotions[i].name;
         }
         else{
-          pos = pos +", "+ this.sharedVars.selectedEntry.posEmotions[i].name;
+          pos = pos +", "+ this.sharedVars.selectedEntry.positiveEmotions[i].name;
         }
       }
     }
 
     //Array negativer Emotionen zu String umwandeln
     let neg = "";
-    for(let i = 0; i < this.sharedVars.selectedEntry.negEmotions.length; i++){
-      if(this.sharedVars.selectedEntry.negEmotions[i].isActive){
+    for(let i = 0; i < this.sharedVars.selectedEntry.negativeEmotions.length; i++){
+      if(this.sharedVars.selectedEntry.negativeEmotions[i].isActive){
         if(neg == ""){
-          neg = this.sharedVars.selectedEntry.negEmotions[i].name;
+          neg = this.sharedVars.selectedEntry.negativeEmotions[i].name;
         }
         else{
-          neg = neg +", "+ this.sharedVars.selectedEntry.negEmotions[i].name;
+          neg = neg +", "+ this.sharedVars.selectedEntry.negativeEmotions[i].name;
         }
       }
     }
 
-    let text = this.sharedVars.selectedEntry.moodText;
+    let text = this.sharedVars.selectedEntry.text;
     let tagstring = this.sharedVars.selectedEntry.tags;
-    let tags = "#"+tagstring.replace(" ", " #");
+
 
 
     let file = day + "\n" +
@@ -101,7 +101,7 @@ export class ReadMoodComponent implements OnInit {
                "\n \n Positive Emotions: " + pos +
                "\n Negative Emotions: " + neg +
                "\n \n" + text +
-               "\n Tags: " + tags;
+               "\n Tags: " + tagstring;
     let filename = title+".txt";
     this.saveService.saveText(file, filename);
   }

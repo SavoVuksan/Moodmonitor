@@ -22,7 +22,7 @@ export class EntryListComponent implements OnInit {
   }
 
   goToEntry(entry: Entry){
-    this.sharedVars.selectedDay = entry.date;
+    this.sharedVars.selectedDay = entry.createdOn;
     this.sharedVars.selectedEntry = entry;
 
     this.router.navigateByUrl('readMood');

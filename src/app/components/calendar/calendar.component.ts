@@ -35,12 +35,12 @@ export class CalendarComponent implements OnInit {
       let ent = data as Entry[];
 
       ent.forEach((element) =>{
-        let entry = new Entry(new Date(element.date));
-        entry.moodText = element.moodText;
+        let entry = new Entry(new Date(element.createdOn));
+        entry.text = element.text;
         entry.tags = element.tags;
         entry.title = element.title
-        entry.posEmotions = element.posEmotions;
-        entry.negEmotions = element.negEmotions;
+        entry.positiveEmotions = element.positiveEmotions;
+        entry.negativeEmotions = element.negativeEmotions;
         this.entries.push(entry);
       });
 
@@ -82,9 +82,9 @@ export class CalendarComponent implements OnInit {
     let type = '';
     date.setDate(field);
     this.entries.forEach((element) =>{
-      if(element.date.getFullYear() === date.getFullYear() && element.date.getMonth() === date.getMonth() && element.date.getDate() === date.getDate()) {
-        if(element.posEmotions.length > 0){
-          if(element.negEmotions.length > 0){
+      if(element.createdOn.getFullYear() === date.getFullYear() && element.createdOn.getMonth() === date.getMonth() && element.createdOn.getDate() === date.getDate()) {
+        if(element.positiveEmotions.length > 0){
+          if(element.negativeEmotions.length > 0){
             type = 'entry neut';
           }else{
             type = 'entry pos';
@@ -140,7 +140,7 @@ export class CalendarComponent implements OnInit {
     const date = new Date(this.selectedDate);
     date.setDate(field);
     return this.entries.filter((val) =>{
-      return (val.date.getFullYear() === date.getFullYear() && val.date.getMonth() === date.getMonth() && val.date.getDate() === date.getDate());
+      return (val.createdOn.getFullYear() === date.getFullYear() && val.createdOn.getMonth() === date.getMonth() && val.createdOn.getDate() === date.getDate());
     });
   }
   entriesPerDay(field: number){
@@ -148,7 +148,7 @@ export class CalendarComponent implements OnInit {
     let count = 0;
     date.setDate(field);
     this.entries.forEach((val) =>{
-      if(val.date.getFullYear() === date.getFullYear() && val.date.getMonth() === date.getMonth() && val.date.getDate() === date.getDate()){
+      if(val.createdOn.getFullYear() === date.getFullYear() && val.createdOn.getMonth() === date.getMonth() && val.createdOn.getDate() === date.getDate()){
         count++;
       }
     });

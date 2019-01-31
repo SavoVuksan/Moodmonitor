@@ -67,8 +67,8 @@ export class SearchComponent implements OnInit {
       console.log(this.tags);
       let output = JSON.parse(JSON.stringify(value)).filter((value) =>{
         let resTags = value.tags.split(' ');
-        let resEmotions = value.posEmotions;
-        let resDate = new Date(value.date);
+        let resEmotions = value.positiveEmotions;
+        let resDate = new Date(value.createdOn);
         let filter = false;
 
 
@@ -89,7 +89,7 @@ export class SearchComponent implements OnInit {
         });
 
         //EMOTIONS
-        value.negEmotions.forEach((emo) =>{
+        value.negativeEmotions.forEach((emo) =>{
           resEmotions.push(emo);
         })
 
@@ -117,7 +117,7 @@ export class SearchComponent implements OnInit {
       });
       console.log(output);
       output = output.map((entry) =>{
-        entry.date = new Date(entry.date);
+        entry.createdOn = new Date(entry.createdOn);
         return entry;
       });
       this.vars.searchEntries = output;

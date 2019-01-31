@@ -22,7 +22,7 @@
       <div class="circle" [ngClass]="(lMDayType === 1 ? 'blue': (lMDayType === -1 ? 'red': 'neut'))">{{lMDayType}}</div>
       <h4 class="margin-left">Last Mood </h4>
       <p class="margin-left">
-        {{this.entry.moodText}}
+        {{this.entry.text}}
       </p>
     </div>
   </div>
@@ -68,7 +68,7 @@
           <div class="circle" [ngClass]="(lMDayType === 1 ? 'blue': (lMDayType === -1 ? 'red': 'neut'))">{{lMDayType}}</div>
           <h4 class="margin-left">Last Mood </h4>
           <p class="margin-left">
-            {{this.entry.moodText}}
+            {{this.entry.text}}
           </p>
         </div>
       </div>

@@ -23,13 +23,13 @@ export class WriteMoodComponent implements OnInit {
     this.posEmotions = new Array();
     this.negEmotions = new Array();
     rest.getPositiveEmotions().subscribe((data) =>{
-      data[0].positiveEmotions.forEach((element) =>{
-        this.posEmotions.push(new Emotion(element,false));
+      (<Array<any>>data).forEach((element) =>{
+        this.posEmotions.push(new Emotion(element.type,element.name,false,element._id));
       });
     });
     rest.getNegativeEmotions().subscribe((data) =>{
-      data[0].negativeEmotions.forEach((element) =>{
-        this.negEmotions.push(new Emotion(element, false));
+      (<Array<any>>data).forEach((element) =>{
+        this.negEmotions.push(new Emotion(element.type,element.name, false,element._id));
       });
     });
     this.tags = '';
@@ -44,20 +44,20 @@ export class WriteMoodComponent implements OnInit {
 
   submit(){
     let entry = new Entry(new Date());
-    entry.tags = this.tags;
-    entry.moodText = this.moodText;
+    entry.tags = this.tags.split('#');
+    entry.text = this.moodText;
     entry.title = this.title;
-    entry.posEmotions = this.posEmotions.filter((element) =>{
+    entry.positiveEmotions = this.posEmotions.filter((element) =>{
       if(element.isActive){
         return element;
       }
     });
-    entry.negEmotions = this.negEmotions.filter((element) => {
+    entry.negativeEmotions = this.negEmotions.filter((element) => {
       if(element.isActive){
         return element;
       }
     });
-    this.rest.postEntry(entry).subscribe((entry) => {
+    this.rest.saveEntry(entry).subscribe((entry) => {
       console.log(JSON.stringify(entry));
       this.router.navigateByUrl('/dashboard');
     });
