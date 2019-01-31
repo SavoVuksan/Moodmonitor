@@ -1,0 +1,65 @@
+<!--Mobile-View-->
+<div *ngIf="this.responsive.getMobile()">
+  <div class="row">
+    <div class="col shadow panel login">
+      <div class="row">
+          <div class="panel title w-100 text-center">
+            <h4>Login</h4>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col panel short">
+              <input type="text" placeholder="Username" class="input-oneLine input-focus" [value]="username">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col panel short">
+          <input type="password" placeholder="Password" class="input-oneLine input-focus" [value]="password">
+        </div>
+      </div>
+      <div class="row save text-center">
+        <div class="col panel-desktop clickable no-select button shadow text-center greencolor" (click)="submit()">
+          Login
+        </div>
+      </div>
+      <div class="row register">
+        <div class="col panel-desktop clickable no-select button shadow text-center" style="background-color:lightgray" (click)="toRegister()">
+          Register
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Desktop-View-->
+<div *ngIf="!this.responsive.getMobile()">
+  <div class="content">
+    <div class="col shadow panel-desktop login">
+      <div class="row">
+          <div class="col panel title-desktop text-center">
+            <h2>Login</h2>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col panel short">
+          <input type="text" placeholder="Username" class="input-oneLine input-focus" [value]="username">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col panel short">
+          <input type="password" placeholder="Password" class="input-oneLine input-focus" [value]="password">
+        </div>
+      </div>
+      <div class="row save text-center">
+        <div class="col panel-desktop clickable no-select button shadow text-center greencolor" (click)="submit()">
+          Login
+        </div>
+      </div>
+      <div class="row register">
+        <div class="col panel-desktop clickable no-select button shadow text-center" style="background-color:lightgray;" (click)="toRegister()">
+          Register
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,9 +15,13 @@ import { ReadMoodComponent } from './components/read-mood/read-mood.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchEntryListComponent } from './components/search-entry-list/search-entry-list.component';
 import { FileSaverModule } from 'ngx-filesaver';
+import { LoginComponent } from './components/login//login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const appRoutes : Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'dashboard' , component: DashboardComponent},
   {path: 'writeMood', component : WriteMoodComponent},
   {path: 'calendar', component: CalendarComponent},
@@ -36,6 +40,8 @@ const appRoutes : Routes = [
     CalendarComponent,
     EntryListComponent,
     ReadMoodComponent,
+    LoginComponent,
+    RegisterComponent,
     SearchComponent,
     SearchEntryListComponent
   ],

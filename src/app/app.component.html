@@ -1,6 +1,6 @@
 <div class="container-fluid" (window:resize)="this.responsive.getMobile()">
   <div *ngIf="this.responsive.getMobile()">
-<app-navigation ></app-navigation>
+<app-navigation *ngIf="this.shared.loggedIn"></app-navigation>
 <router-outlet></router-outlet>
   </div>
 
@@ -8,7 +8,7 @@
 
   <div *ngIf="!this.responsive.getMobile()">
   <div class="row">
-    <div class="desktop-nav ">
+    <div class="desktop-nav " *ngIf="this.shared.loggedIn">
       <app-navigation>
 
       </app-navigation>

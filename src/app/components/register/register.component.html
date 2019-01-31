@@ -1,0 +1,86 @@
+<!--Mobile-View-->
+<div *ngIf="this.responsive.getMobile()">
+    <div class="row">
+      <div class="col shadow panel login">
+        <div class="row">
+            <div class="panel title w-100 text-center">
+              <h4>Register</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col panel short">
+                <input type="text" placeholder="Username" class="input-oneLine input-focus" [value]="username">
+            </div>
+        </div>
+        <div class="row">
+          <div class="col panel short">
+            <input type="email" placeholder="E-Mail" class="input-oneLine input-focus" [value]="email"> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col panel short">
+            <input type="password" placeholder="Password" class="input-oneLine input-focus" [value]="password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col panel short">
+            <input type="password" placeholder="Repeat Password" class="input-oneLine input-focus" [value]="repeatPw">
+          </div>
+        </div>
+        <div class="row save text-center">
+          <div class="col panel-desktop clickable no-select button shadow text-center greencolor" (click)="submit()">
+            Register
+          </div>
+        </div>
+        <div class="row register">
+          <div class="col panel-desktop clickable no-select button shadow text-center" style="background-color:lightgray" (click)="toLogin()">
+            Return to Login
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--Desktop-View-->
+  <div *ngIf="!this.responsive.getMobile()">
+    <div class="content">
+      <div class="col shadow panel-desktop loginDesktop">
+        <div class="row">
+            <div class="col panel title-desktop text-center">
+              <h2>Register</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col panel short">
+                <input type="text" placeholder="Username" class="input-oneLine input-focus" [value]="username">
+            </div>
+        </div>
+        <div class="row">
+          <div class="col panel short">
+            <input type="email" placeholder="E-Mail" class="input-oneLine input-focus" [value]="email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col panel short">
+            <input type="password" placeholder="Password" class="input-oneLine input-focus" [value]="password">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col panel short">
+            <input type="password" placeholder="Repeat Password" class="input-oneLine input-focus" [value]="repeatPw">
+          </div>
+        </div>
+        <div class="row save text-center">
+          <div class="col panel-desktop clickable no-select button shadow text-center greencolor" (click)="submit()">
+            Register
+          </div>
+        </div>
+        <div class="row register">
+          <div class="col panel-desktop clickable no-select button shadow text-center" style="background-color:lightgray" (click)="toLogin()">
+            Return to Login
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
