@@ -31,18 +31,8 @@ export class CalendarComponent implements OnInit {
     this.entries = new Array<Entry>();
     let fromTo = this.getRange();
 
-    this.rest.getRangeEntries(fromTo[0],fromTo[1]).subscribe((data) =>{
-      let ent = data as Entry[];
-
-      ent.forEach((element) =>{
-        let entry = new Entry(new Date(element.createdOn));
-        entry.text = element.text;
-        entry.tags = element.tags;
-        entry.title = element.title
-        entry.positiveEmotions = element.positiveEmotions;
-        entry.negativeEmotions = element.negativeEmotions;
-        this.entries.push(entry);
-      });
+    this.rest.getAllEntries().subscribe((data) =>{
+      this.entries = data as Array<Entry>;
 
     });
 

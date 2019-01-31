@@ -32,8 +32,8 @@ export class RestService {
   public getLastCreatedEntry(){
     return this.http.get(`http://${this.ip}:3000/getLastEntry`,{withCredentials: true});
   }
-  public getRangeEntries(from: Date, to: Date){
-    return this.http.get(`http://${this.ip}:3000/getRangeEntries?from=${from}&to=${to}`);
+  public getAllEntries(){
+    return this.http.get(`http://${this.ip}:3000/getAllEntries`,{withCredentials: true});
   }
   public searchEntries(){
     return this.http.get(`http://${this.ip}:3000/searchEntries`);
