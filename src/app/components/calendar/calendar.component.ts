@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Entry} from '../../classes/entry';
-import {RestServiceService} from '../../services/rest-service.service';
+import {RestService} from '../../services/rest.service';
 import {Router} from '@angular/router';
 import {SharedVarsService} from '../../services/shared-vars.service';
 import {ResponsiveService} from '../../services/responsive.service';
@@ -21,7 +21,7 @@ export class CalendarComponent implements OnInit {
 
   entries: Entry[];
 
-  constructor(private rest: RestServiceService,private router: Router,private sharedVars:SharedVarsService,public responsive: ResponsiveService) {
+  constructor(private rest: RestService, private router: Router, private sharedVars:SharedVarsService, public responsive: ResponsiveService) {
     this.calendarRows = Array(5);
     this.calendarCols = Array(7);
     this.dayCount = this.daysInMonth(new Date());

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Emotion} from '../../classes/emotion';
-import {RestServiceService} from '../../services/rest-service.service';
+import {RestService} from '../../services/rest.service';
 import {Entry} from '../../classes/entry';
 import {Router} from '@angular/router';
 import {ResponsiveService} from '../../services/responsive.service';
@@ -19,7 +19,7 @@ export class WriteMoodComponent implements OnInit {
   moodText: string;
   title: string;
 
-  constructor(private rest:RestServiceService, private router: Router, public responsive:ResponsiveService) {
+  constructor(private rest:RestService, private router: Router, public responsive:ResponsiveService) {
     this.posEmotions = new Array();
     this.negEmotions = new Array();
     rest.getPositiveEmotions().subscribe((data) =>{

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RestServiceService} from '../../services/rest-service.service';
+import {RestService} from '../../services/rest.service';
 import {Entry} from '../../classes/entry';
 import {SharedVarsService} from '../../services/shared-vars.service';
 import {Router} from '@angular/router';

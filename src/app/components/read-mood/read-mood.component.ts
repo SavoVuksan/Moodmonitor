@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SharedVarsService} from '../../services/shared-vars.service';
 import {Emotion} from '../../classes/emotion';
-import {RestServiceService} from '../../services/rest-service.service';
+import {RestService} from '../../services/rest.service';
 import {ResponsiveService} from '../../services/responsive.service';
 import { FileSaverService } from 'ngx-filesaver';
 
@@ -17,7 +17,7 @@ export class ReadMoodComponent implements OnInit {
 
 
 
-  constructor(public sharedVars: SharedVarsService,public rest: RestServiceService, public responsive: ResponsiveService,
+  constructor(public sharedVars: SharedVarsService, public rest: RestService, public responsive: ResponsiveService,
               private saveService: FileSaverService) {
 
     this.posEmotions = new Array();
@@ -97,10 +97,17 @@ export class ReadMoodComponent implements OnInit {
     let tagstring = this.sharedVars.selectedEntry.tags;
     let tags = "#"+tagstring.replace(" ", " #");
 
+<<<<<<< HEAD
     //Fileinhalt aus Strings zusammenfügen
     let file = day + "\n" + 
                title + 
                "\n \n Positive Emotions: " + pos + 
+=======
+
+    let file = day + "\n" +
+               title +
+               "\n \n Positive Emotions: " + pos +
+>>>>>>> 9cf46f17fa9f875a4306e5929117a3b5e272ed64
                "\n Negative Emotions: " + neg +
                "\n \n" + text +
                "\n Tags: " + tags;
