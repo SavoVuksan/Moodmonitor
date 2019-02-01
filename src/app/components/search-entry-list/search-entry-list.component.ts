@@ -22,9 +22,10 @@ export class SearchEntryListComponent implements OnInit {
   }
 
   viewEntry(e: Entry){
-    this.vars.selectedEntry = e;
+    this.vars.setSelectedEntry(e);
     this.vars.selectedDay = e.createdOn;
     this.router.navigateByUrl('readMood');
   }
+
 
 }

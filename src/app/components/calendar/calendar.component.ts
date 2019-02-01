@@ -34,6 +34,13 @@ export class CalendarComponent implements OnInit {
     this.rest.getAllEntries().subscribe((data) =>{
       this.entries = data as Array<Entry>;
 
+      this.entries = this.entries.map(e => {
+        const createdOnString = e.createdOn;
+        e.createdOn = new Date(createdOnString);
+        return e;
+      });
+
+
     });
 
 
@@ -112,7 +119,7 @@ export class CalendarComponent implements OnInit {
           this.router.navigateByUrl('/entryList');
         }
       }else{
-         this.sharedVars.selectedEntry = this.getSelectedDayEntries(field)[0];
+         this.sharedVars.setSelectedEntry(this.getSelectedDayEntries(field)[0]);
         const selDate = new Date(this.selectedDate);
         selDate.setDate(field);
         this.sharedVars.selectedDay = selDate;

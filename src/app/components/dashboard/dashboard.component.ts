@@ -61,8 +61,8 @@ export class DashboardComponent implements OnInit {
   }
 
   routeToLastMood(){
-    this.sharedVars.selectedEntry = this.entry;
-    this.sharedVars.selectedDay = new Date(this.entry.createdOn);
+    this.sharedVars.setSelectedEntry(this.entry);
+
 
     this.router.navigateByUrl('/readMood');
   }

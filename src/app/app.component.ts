@@ -13,7 +13,7 @@ export class AppComponent {
   title = 'app';
 
   constructor(public responsive:ResponsiveService, public rest: RestService, public shared: SharedVarsService){
-      this.shared.loggedIn = true;
+  this.shared.loggedIn = true;
 
   }
 }

@@ -29,13 +29,13 @@ export class ReadMoodComponent implements OnInit {
       });
 
       this.posEmotions.map((value) =>{
-
         if(this.sharedVars.selectedEntry.positiveEmotions.find((val) =>{
 
           return val.id === value.id;
         })){
           value.isActive = true;
         }
+        return value;
       });
 
     });
@@ -48,7 +48,7 @@ export class ReadMoodComponent implements OnInit {
       this.negEmotions.map((value) =>{
 
         if(this.sharedVars.selectedEntry.negativeEmotions.find((val) =>{
-          return val.name.toLowerCase() === value.name.toLowerCase();
+          return val.id === value.id;
         })){
           value.isActive = true;
         }
@@ -67,30 +67,16 @@ export class ReadMoodComponent implements OnInit {
     let title = this.sharedVars.selectedEntry.title;
 
     //Array positiver Emotionen zu String umwandeln
-    let pos = "";
-    for(let i = 0; i < this.sharedVars.selectedEntry.positiveEmotions.length; i++){
-      if(this.sharedVars.selectedEntry.positiveEmotions[i].isActive){
-        if(pos == ""){
-          pos = this.sharedVars.selectedEntry.positiveEmotions[i].name;
-        }
-        else{
-          pos = pos +", "+ this.sharedVars.selectedEntry.positiveEmotions[i].name;
-        }
-      }
-    }
+    let pos = '';
+    this.getEmotions(this.sharedVars.avaiablePositiveEmotions,this.sharedVars.selectedEntry.positiveEmotions).forEach(e => {
+      pos += e.name + ' ';
+    });
 
     //Array negativer Emotionen zu String umwandeln
-    let neg = "";
-    for(let i = 0; i < this.sharedVars.selectedEntry.negativeEmotions.length; i++){
-      if(this.sharedVars.selectedEntry.negativeEmotions[i].isActive){
-        if(neg == ""){
-          neg = this.sharedVars.selectedEntry.negativeEmotions[i].name;
-        }
-        else{
-          neg = neg +", "+ this.sharedVars.selectedEntry.negativeEmotions[i].name;
-        }
-      }
-    }
+    let neg = '';
+    this.getEmotions(this.sharedVars.avaiableNegativeEmotions,this.sharedVars.selectedEntry.negativeEmotions).forEach(e => {
+      neg += e.name +' ';
+    })
 
     let text = this.sharedVars.selectedEntry.text;
     let tagstring = this.sharedVars.selectedEntry.tags;
@@ -105,5 +91,23 @@ export class ReadMoodComponent implements OnInit {
                "\n Tags: " + tagstring;
     let filename = title+".txt";
     this.saveService.saveText(file, filename);
+  }
+
+  /**
+   * Gibt die Emotionen zurück die Selektiert sind
+   * @param aviableList Alle verfügbaren emotionen
+   * @param selectedList Selektierte emotionen
+   */
+  getEmotions(aviableList: Array<Emotion>, selectedList: Array<Emotion>): Array<Emotion>{
+    return aviableList.filter(e => {
+      let k = false;
+      selectedList.forEach(s =>{
+        if(e.id === s.id){
+          k = true;
+          return k;
+        }
+      });
+      return k;
+    });
   }
 }

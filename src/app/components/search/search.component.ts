@@ -53,13 +53,12 @@ export class SearchComponent implements OnInit {
 
   public search(){
 
-    this.rest.searchEntries().subscribe(value => {
+    this.rest.getAllEntries().subscribe(value => {
       this.searching = true;
       this.searchingChange.emit(this.searching);
       this.filterDate();
       this.filterEmotion();
       this.filterTag();
-
 
       console.log(this.searchText);
       console.log(this.dates);
