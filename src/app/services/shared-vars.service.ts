@@ -19,6 +19,8 @@ export class SharedVarsService {
   public avaiableNegativeEmotions: Array<Emotion>;
   public initializedEmotions: EventEmitter<boolean> ;
 
+  public username: string;
+
   constructor(private rest: RestService) {
     this.selectedDay = new Date();
     this.selectedDayEntries = new Array();
@@ -26,6 +28,8 @@ export class SharedVarsService {
 
     this.loggedIn = false;
     this.searchEntries = new Array<Entry>();
+
+    this.username = '';
 
     this.initAvaiableEmotions();
   }
@@ -69,12 +73,14 @@ export class SharedVarsService {
       (<Array<any>>data).forEach((element) =>{
         this.avaiablePositiveEmotions.push(new Emotion(element.type, element.name,false, element._id));
       });
+      this.avaiablePositiveEmotions = Emotion.sortEmotions(this.avaiablePositiveEmotions);
     });
     this.rest.getNegativeEmotions().subscribe((data) =>{
       (<Array<any>>data).forEach((element) =>{
         this.avaiableNegativeEmotions.push(new Emotion(element.type, element.name, false, element._id));
 
       });
+      this.avaiableNegativeEmotions = Emotion.sortEmotions(this.avaiableNegativeEmotions);
       this.initializedEmotions.emit(true);
     });
   }

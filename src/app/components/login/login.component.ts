@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
 
     this.rest.login({username: this.username, password: this.password}).subscribe(data =>{
       if((<any>data.body).text === 'success'){
+        this.shared.username = this.username;
         this.router.navigateByUrl("/dashboard");
         this.shared.loggedIn = true;
       }else{

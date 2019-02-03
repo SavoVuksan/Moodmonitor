@@ -22,6 +22,7 @@ export class EntryListComponent implements OnInit {
   }
 
   goToEntry(entry: Entry){
+    console.log(entry);
     this.sharedVars.setSelectedEntry(entry);
 
     this.router.navigateByUrl('readMood');

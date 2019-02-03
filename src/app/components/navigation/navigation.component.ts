@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 import {ResponsiveService} from '../../services/responsive.service';
+import {SharedVarsService} from '../../services/shared-vars.service';
 
 @Component({
   selector: 'app-navigation',
@@ -10,12 +11,13 @@ import {ResponsiveService} from '../../services/responsive.service';
 export class NavigationComponent implements OnInit {
 // TODO: Fix bug when switching between Mobile to Desktop View buttons won't react
   isActive : boolean;
-
-  constructor(public responsive: ResponsiveService) {
+  constructor(public responsive: ResponsiveService, public shared: SharedVarsService) {
     this.isActive = false;
+
   }
 
   ngOnInit() {
+
   }
 
   toggleNav(){

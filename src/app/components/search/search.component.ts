@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {RestService} from '../../services/rest.service';
 import {SharedVarsService} from '../../services/shared-vars.service';
+import {Entry} from '../../classes/entry';
 
 @Component({
   selector: 'app-search',
@@ -64,10 +65,10 @@ export class SearchComponent implements OnInit {
       console.log(this.dates);
       console.log(this.emotions);
       console.log(this.tags);
-      let output = JSON.parse(JSON.stringify(value)).filter((value) =>{
-        let resTags = value.tags.split(' ');
-        let resEmotions = value.positiveEmotions;
-        let resDate = new Date(value.createdOn);
+      let output = (value as Array<Entry>).filter((entry) =>{
+        let resTags = entry.tags;
+        let resEmotions = entry.positiveEmotions;
+        let resDate = new Date(entry.createdOn);
         let filter = false;
 
 
@@ -79,7 +80,7 @@ export class SearchComponent implements OnInit {
 
         resTags.forEach((tag) =>{
           this.tags.forEach((x) =>{
-            if(x === tag.replace('#','')){
+            if(x === tag){
               filter = true;
             }
           });
@@ -88,7 +89,7 @@ export class SearchComponent implements OnInit {
         });
 
         //EMOTIONS
-        value.negativeEmotions.forEach((emo) =>{
+        entry.negativeEmotions.forEach((emo) =>{
           resEmotions.push(emo);
         })
 

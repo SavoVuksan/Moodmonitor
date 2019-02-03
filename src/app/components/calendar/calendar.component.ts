@@ -32,12 +32,15 @@ export class CalendarComponent implements OnInit {
     let fromTo = this.getRange();
 
     this.rest.getAllEntries().subscribe((data) =>{
-      this.entries = data as Array<Entry>;
-
-      this.entries = this.entries.map(e => {
-        const createdOnString = e.createdOn;
-        e.createdOn = new Date(createdOnString);
-        return e;
+      (data as Array<any>).forEach(o => {
+        let e = new Entry(new Date(o.createdOn));
+        e.title = o.title;
+        e.text = o.text;
+        e.tags = o.tags;
+        e.positiveEmotions = Entry.dbEmotionListtoClientEmotionList(o.positiveEmotions);
+        e.negativeEmotions = Entry.dbEmotionListtoClientEmotionList(o.negativeEmotions);
+        e.id = o._id;
+        this.entries.push(e);
       });
 
 
@@ -107,7 +110,7 @@ export class CalendarComponent implements OnInit {
 
   viewEntry(field: number){
     if(this.hasFieldEntry(field) !== ''){
-
+      this.selectedDate.setDate(field);
       //Switch to list view when there are more than 1 entry
       if(this.entriesPerDay(field) > 1){
         this.sharedVars.selectedDayEntries = this.getSelectedDayEntries(field);
