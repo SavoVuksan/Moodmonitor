@@ -24,14 +24,12 @@ export class ReadMoodComponent implements OnInit {
     this.negEmotions = new Array();
 
     this.rest.getPositiveEmotions().subscribe((data) =>{
-      (<Array<any>>data).forEach((val) =>{
-        this.posEmotions.push(new Emotion(val.type,val.name,false, val._id));
-      });
+      this.posEmotions = data as Array<Emotion>;
 
       this.posEmotions.map((value) =>{
         if(this.sharedVars.selectedEntry.positiveEmotions.find((val) =>{
 
-          return val.id === value.id;
+          return val._id === value._id;
         })){
           value.isActive = true;
         }
@@ -41,22 +39,18 @@ export class ReadMoodComponent implements OnInit {
     });
 
     this.rest.getNegativeEmotions().subscribe((data) =>{
-      (<Array<any>>data).forEach((val) =>{
-        this.negEmotions.push(new Emotion(val.type,val.name,false,val._id));
-      });
+          this.negEmotions = data as Array<Emotion>;
+
 
       this.negEmotions.map((value) =>{
 
         if(this.sharedVars.selectedEntry.negativeEmotions.find((val) =>{
-          return val.id === value.id;
+          return val._id === value._id;
         })){
           value.isActive = true;
         }
       });
     });
-
-
-
   }
 
   ngOnInit() {
@@ -102,7 +96,7 @@ export class ReadMoodComponent implements OnInit {
     return aviableList.filter(e => {
       let k = false;
       selectedList.forEach(s =>{
-        if(e.id === s.id){
+        if(e._id === s._id){
           k = true;
           return k;
         }

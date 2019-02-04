@@ -53,12 +53,7 @@ export class SharedVarsService {
   setSelectedEntry(entry:Entry){
     this.selectedDay = new Date(entry.createdOn);
     this.selectedEntry = entry;
-    this.selectedEntry.positiveEmotions = this.selectedEntry.positiveEmotions.map(pe => {
-      return new Emotion('positive','',true,pe as any as string);
-    });
-    this.selectedEntry.negativeEmotions = this.selectedEntry.negativeEmotions.map(pe => {
-      return new Emotion('negative','',true,pe as any as string);
-    });
+
   }
 
   /**

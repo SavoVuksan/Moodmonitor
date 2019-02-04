@@ -21,7 +21,16 @@ export class RestService {
     return this.http.get(`http://${this.ip}:3000/getNegativeEmotions`);
   }
   public saveEntry(entry: Entry){
-    return this.http.post(`http://${this.ip}:3000/saveEntry`, entry ,{withCredentials: true});
+    const data = {
+      title: entry.title,
+      text: entry.text,
+      tags: entry.tags,
+      positiveEmotions: entry.positiveEmotions.map(e => e._id),
+      negativeEmotions: entry.negativeEmotions.map(e => e._id),
+    };
+    console.log(data);
+
+    return this.http.post(`http://${this.ip}:3000/saveEntry`, data ,{withCredentials: true});
   }
   public getGoodDayCount(){
     return this.http.get(`http://${this.ip}:3000/goodDayCount`, {withCredentials: true});
