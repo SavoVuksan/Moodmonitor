@@ -28,3 +28,7 @@ margin-top: 10px;
   font-weight: lighter;
   font-size: 1.3em;
 }
+.logOut{
+
+  cursor: pointer;
+}
