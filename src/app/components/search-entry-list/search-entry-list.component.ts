@@ -13,7 +13,7 @@ export class SearchEntryListComponent implements OnInit {
 
 
 
-  constructor(private vars:SharedVarsService,private router: Router) {
+  constructor(public vars:SharedVarsService, private router: Router) {
 
   }
 

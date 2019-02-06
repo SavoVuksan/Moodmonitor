@@ -23,9 +23,11 @@ export class ReadMoodComponent implements OnInit {
     this.posEmotions = new Array();
     this.negEmotions = new Array();
 
+    // Fetch the positive emotions from the server
     this.rest.getPositiveEmotions().subscribe((data) =>{
       this.posEmotions = data as Array<Emotion>;
 
+      // When Emotion was selected mark as Active
       this.posEmotions.map((value) =>{
         if(this.sharedVars.selectedEntry.positiveEmotions.find((val) =>{
 
@@ -38,12 +40,14 @@ export class ReadMoodComponent implements OnInit {
 
     });
 
+    // Fetch the negativeEmotions from the server
     this.rest.getNegativeEmotions().subscribe((data) =>{
           this.negEmotions = data as Array<Emotion>;
 
 
       this.negEmotions.map((value) =>{
 
+        // When Emotion was selected mark as Active
         if(this.sharedVars.selectedEntry.negativeEmotions.find((val) =>{
           return val._id === value._id;
         })){
@@ -56,6 +60,9 @@ export class ReadMoodComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Export of the data as txt. Collects all data from var and saves as string
+   */
   export(){
     let day = this.sharedVars.selectedDay.toLocaleDateString();
     let title = this.sharedVars.selectedEntry.title;
@@ -84,6 +91,7 @@ export class ReadMoodComponent implements OnInit {
                "\n \n" + text +
                "\n Tags: " + tagstring;
     let filename = title+".txt";
+    // Service der File saved
     this.saveService.saveText(file, filename);
   }
 
