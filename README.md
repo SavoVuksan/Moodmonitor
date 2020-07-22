@@ -6,7 +6,7 @@ It uses Angular as a frontend framework.
 In the backend it uses node.js with express to run a rest service.
 As a DB we used the NoSQL database MongoDB.
 
-<img src="https://github.com/SavoVuksan/MoodApp/blob/master/Presentation.gif" width="800" />
+<img src="https://github.com/SavoVuksan/Moodmonitor/blob/master/Presentation.gif" width="800" />
 
 # How to run
 You need to clone this project and also the [Server](https://github.com/SavoVuksan/MoodMonitorServer)
