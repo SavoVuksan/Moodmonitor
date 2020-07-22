@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   submit(){
-
+    console.log(this.username, this.password);
     this.rest.login({username: this.username, password: this.password}).subscribe(data =>{
       if((<any>data.body).text === 'success'){
         this.shared.username = this.username;
