@@ -1,6 +1,6 @@
 # Mood Monitor
-Mood Monitor is an webapp to track your days.
-It is just like a diary just with MOODS!
+Mood Monitor is a webapp to track your days.
+It is like a diary just with MOODS!
 Mood Monitor was a school project done during 2 semester.
 It uses Angular as a frontend framework.
 In the backend it uses node.js with express to run a rest service.
